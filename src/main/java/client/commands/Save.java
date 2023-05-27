@@ -20,7 +20,7 @@ public class Save extends AbstractCommand {
     @Override
     public void execute() throws IOException {
         parseToCSV.runner();
-        ConsoleOutput.messageOutput("Collection saved");
+        System.out.println("Collection saved");
     }
 
     @Override

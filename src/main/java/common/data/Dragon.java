@@ -1,5 +1,7 @@
 package common.data;
 
+import server.GenerationId;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -29,8 +31,8 @@ public class Dragon implements Comparable<Dragon> {
         this.creationDate = LocalDateTime.now();
     }
 
-    public Dragon(Long id, String name, Coordinates coordinates, Long age, String description, boolean speaking, DragonCharacter dragonCharacter, DragonHead dragonHead) {
-        this.id = id;
+    public Dragon(String name, Coordinates coordinates, Long age, String description, boolean speaking, DragonCharacter dragonCharacter, DragonHead dragonHead) {
+        this.id = GenerationId.generatorId();
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = LocalDateTime.now();
@@ -68,7 +70,7 @@ public class Dragon implements Comparable<Dragon> {
                 "\", " + head.toCSVHead();
     }
 
-    
+
     public int compareTo(Dragon dragon) {
         int nameCompare = this.getName().compareToIgnoreCase(dragon.getName());
         if (nameCompare != 0)
@@ -149,7 +151,7 @@ public class Dragon implements Comparable<Dragon> {
         this.head = head;
     }
 
-    public boolean validData() {
+    /*public boolean validData() {
         if (id == -1) return false;
         if (name.equals("")) return false;
         if (coordinates.getX() == null || coordinates.getY() == null) return false;
@@ -158,5 +160,5 @@ public class Dragon implements Comparable<Dragon> {
         //if (speaking == null) return false;
         if (head.getEyesCount() == -1 || head.getToothCount() == -1) return false;
         return true;
-    }
+    }*/
 }

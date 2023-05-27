@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.DragonCollection;
 import server.dragon.Dragon;
 import superCommand.AbstractCommand;
@@ -13,7 +14,7 @@ import utils.InputData;
 //add try+catch
 public class FilterStartsWithDescription extends AbstractCommand {
 
-    public FilterStartsWithDescription(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public FilterStartsWithDescription(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.STRING;
     }

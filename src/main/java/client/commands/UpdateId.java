@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.DragonCollection;
 import colors.ConsoleOutput;
 import server.dragon.Dragon;
@@ -15,7 +16,7 @@ import utils.InputData;
  */
 public class UpdateId extends AbstractCommand {
 
-    public UpdateId(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public UpdateId(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.LONG;
     }
@@ -36,7 +37,7 @@ public class UpdateId extends AbstractCommand {
                     if (inputDragonData.getFileMode()){
                         Dragon setDragon = inputDragonData.inputDragon();
                         if (setDragon != null) {
-                            dragon.setId(setDragon.getId());
+                            /*dragon.setId(setDragon.getId());
                             dragon.setName(setDragon.getName());
                             dragon.setCoordinates(setDragon.getCoordinates());
                             dragon.setAge(setDragon.getAge());
@@ -44,32 +45,30 @@ public class UpdateId extends AbstractCommand {
                             dragon.setSpeaking(setDragon.isSpeaking());
                             dragon.setCharacter(setDragon.getCharacter());
                             dragon.setHead(setDragon.getHead());
-                            flag = true;
-                            break;
+                            */            break;
                         } else {
                             throw new IncorrectInputInScriptException();
                         }
                     } else {
-                        dragon.setName(inputDragonData.inputName());
+                        /*dragon.setName(inputDragonData.inputName());
                         dragon.setCoordinates(inputDragonData.inputCoordinates());
                         dragon.setAge(inputDragonData.inputAge());
                         dragon.setDescription(inputDragonData.inputDescription());
                         dragon.setSpeaking(inputDragonData.canSpeak());
                         dragon.setCharacter(inputDragonData.inputCharacter());
                         dragon.setHead(inputDragonData.inputDragonHead());
-                        flag = true;
-                        break;
+                                break;*/
                     }
                 }
             }
 
             if (!flag) throw new NoElementInCollectionException();
-            ConsoleOutput.messageOutput("Dragon updated");
+            System.out.println("Dragon updated");
 
         } catch (NoElementInCollectionException exception) {
-            ConsoleOutput.errOutput("No server.dragon with that id in collection");
+            System.out.println("No server.dragon with that id in collection");
         } catch (IncorrectInputInScriptException e) {
-            ConsoleOutput.errOutput("Dragon didnt update");
+            System.out.println("Dragon didnt update");
         }
 
     }

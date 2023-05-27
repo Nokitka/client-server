@@ -2,8 +2,10 @@ package server;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import common.data.Coordinates;
 import common.data.Dragon;
 import common.data.DragonCharacter;
+import common.data.DragonHead;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
@@ -50,7 +52,7 @@ public class Parser {
 
         //String path = "C:\\Users\\mad_duck\\Documents\\GitHub\\lab5\\test.csv";
         String path = file.getPath();
-        if (path == null) {
+        if (path.equals("")) {
             return new DragonCollection();
         }
 
@@ -62,17 +64,17 @@ public class Parser {
 
             while ((line = csvReader.readNext()) != null) {
                 line = StringUtils.stripAll(line);
-                Dragon dragon = new Dragon();
-                dragon.setId(Long.parseLong(line[0]));
-                dragon.setName(line[1]);
-                dragon.getCoordinates().setX(Integer.parseInt(line[2]));
-                dragon.getCoordinates().setY(Float.parseFloat(line[3]));
-                dragon.setAge(Long.parseLong(line[4]));
-                dragon.setDescription(line[5]);
-                dragon.setSpeaking(Boolean.parseBoolean(line[6]));
-                dragon.setCharacter(DragonCharacter.valueOf(line[7].trim().toUpperCase()));
-                dragon.getHead().setEyesCount(Float.parseFloat(line[8]));
-                dragon.getHead().setToothCount(Integer.parseInt(line[9]));
+                Dragon dragon = new Dragon(
+                        line[0],
+                        new Coordinates(Integer.parseInt(line[1]),
+                                Float.parseFloat(line[2])),
+                        Long.parseLong(line[3]),
+                        line[4],
+                        Boolean.parseBoolean(line[5]),
+                        Enum.valueOf(DragonCharacter.class, String.valueOf(Integer.parseInt(line[6]))),
+                        new DragonHead(Float.parseFloat(line[7]),
+                                Integer.parseInt(line[8]))
+                );
                 dragons.add(dragon);
             }
 
@@ -81,10 +83,7 @@ public class Parser {
             System.out.println("Ошибка при парсе csv файла");
         }
 
-        DragonCollection dragonCollection = new DragonCollection();
-        dragonCollection.setDragons(dragons);
-
-        return dragonCollection;
+        return new DragonCollection(dragons);
     }
 
 }

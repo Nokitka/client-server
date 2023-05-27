@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.CustomComparator;
 import collections.DragonCollection;
 import server.dragon.Dragon;
@@ -16,7 +17,7 @@ import java.util.TreeSet;
  */
 public class FilterContainsName extends AbstractCommand {
 
-    public FilterContainsName(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public FilterContainsName(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.STRING;
     }

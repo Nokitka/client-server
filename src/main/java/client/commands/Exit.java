@@ -18,7 +18,7 @@ public class Exit extends AbstractCommand {
 
     @Override
     public void execute() {
-        ConsoleOutput.messageOutput("Console application closed");
+        System.out.println("Console application closed");
         closed = true;
     }
 

@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.DragonCollection;
 import colors.ConsoleOutput;
 import server.dragon.Dragon;
@@ -17,7 +18,7 @@ import utils.InputData;
  */
 public class Add extends AbstractCommand {
 
-    public Add(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public Add(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.NULL;
     }
@@ -29,9 +30,9 @@ public class Add extends AbstractCommand {
 
         if (dragon != null) {
             dragonsCollection.getDragons().add(dragon);
-            ConsoleOutput.messageOutput("Dragon added to collection");
+            System.out.println("Dragon added to collection");
         } else {
-            ConsoleOutput.errOutput("Dragon didn`t add to collection");
+            System.out.println("Dragon didn`t add to collection");
         }
 
     }

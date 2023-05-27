@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.DragonCollection;
 import colors.ConsoleOutput;
 import server.dragon.Dragon;
@@ -15,7 +16,7 @@ import utils.InputData;
  */
 public class AddIfMax extends AbstractCommand {
 
-    public AddIfMax(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public AddIfMax(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.NULL;
     }
@@ -32,13 +33,13 @@ public class AddIfMax extends AbstractCommand {
 
             if (dragonsCollection.getDragons().last().compareTo(compareDragon) < 0) {
                 dragonsCollection.getDragons().add(compareDragon);
-                ConsoleOutput.messageOutput("Dragon added to collection");
+                System.out.println("Dragon added to collection");
             } else {
                 System.out.println("Dragon lower than the greatest server.dragon in collection ");
             }
 
         } catch (DragonCollectionIsEmptyException exception) {
-            ConsoleOutput.errOutput("Dragon collection is empty");
+            System.out.println("Dragon collection is empty");
         }
 
     }

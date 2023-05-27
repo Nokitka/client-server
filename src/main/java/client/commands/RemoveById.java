@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.DragonCollection;
 import colors.ConsoleOutput;
 import server.dragon.Dragon;
@@ -15,7 +16,7 @@ import utils.InputData;
 //add try+catch
 public class RemoveById extends AbstractCommand {
 
-    public RemoveById(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public RemoveById(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.LONG;
     }
@@ -33,17 +34,16 @@ public class RemoveById extends AbstractCommand {
             for (Dragon dragon : dragonsCollection.getDragons()) {
                 if (dragon.getId().equals(argId)) {
                     rmvDragon= dragon;
-                    flag = true;
-                }
+                    }
             }
             if (!flag) throw new NoElementInCollectionException();
             dragonsCollection.getDragons().remove(rmvDragon);
 
-            ConsoleOutput.messageOutput("Dragon with id = " + argId + " deleted");
+            System.out.println("Dragon with id = " + argId + " deleted");
 
         } catch (
                 NoElementInCollectionException exception) {
-            ConsoleOutput.errOutput("No server.dragon with that id in collection");
+            System.out.println("No server.dragon with that id in collection");
         }
 
     }

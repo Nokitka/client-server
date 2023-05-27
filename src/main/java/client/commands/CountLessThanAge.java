@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.DragonCollection;
 import colors.ConsoleOutput;
 import server.dragon.Dragon;
@@ -14,7 +15,7 @@ import utils.InputData;
 //add try+catch
 public class CountLessThanAge extends AbstractCommand {
 
-    public CountLessThanAge(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public CountLessThanAge(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.LONG;
     }
@@ -30,8 +31,8 @@ public class CountLessThanAge extends AbstractCommand {
         }
 
         if (count == 0) System.out.println("All dragons older than this age");
-        else if (count == 1) ConsoleOutput.messageOutput("There is 1 server.dragon older than this age");
-        else ConsoleOutput.messageOutput("There are " + count + " dragons older than this age");
+        else if (count == 1) System.out.println("There is 1 server.dragon older than this age");
+        else System.out.println("There are " + count + " dragons older than this age");
 
 
     }

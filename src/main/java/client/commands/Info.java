@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.DragonCollection;
 import colors.ConsoleOutput;
 import superCommand.AbstractCommand;
@@ -16,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 //some else?
 public class Info extends AbstractCommand {
 
-    public Info(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public Info(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.NULL;
     }
@@ -24,11 +25,11 @@ public class Info extends AbstractCommand {
     @Override
     public void execute() {
 
-        ConsoleOutput.messageOutput("Info about collection{");
-        ConsoleOutput.messageOutput("    Type of collection : " + dragonsCollection.getDragons().getClass().getName());
-        ConsoleOutput.messageOutput("    Size of collection : " + dragonsCollection.getDragons().size());
-        ConsoleOutput.messageOutput("    Date of creation collection : " + dragonsCollection.getCreationDate().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss")));
-        ConsoleOutput.messageOutput("}");
+        System.out.println("Info about collection{");
+        System.out.println("    Type of collection : " + dragonsCollection.getDragons().getClass().getName());
+        System.out.println("    Size of collection : " + dragonsCollection.getDragons().size());
+        System.out.println("    Date of creation collection : " + dragonsCollection.getCreationDate().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss")));
+        System.out.println("}");
 
     }
 

@@ -6,6 +6,7 @@ import common.data.DragonCharacter;
 import common.network.CommandResult;
 import common.network.Request;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,7 +29,14 @@ public class DragonCollection extends DataManager implements Serializable {
         this.parser = parser;
     }
 
-//----------------------Getters&Setters----------------------
+    public DragonCollection(TreeSet<Dragon> dragons) {
+        this.dragons = dragons;
+    }
+
+    public DragonCollection() {
+    }
+
+    //----------------------Getters&Setters----------------------
 
     public TreeSet<Dragon> getDragons() {
         return dragons;
@@ -42,7 +50,7 @@ public class DragonCollection extends DataManager implements Serializable {
         this.dragons = dragons;
     }
 
-//----------------------Methods----------------------
+//----------------------Auxiliary methods----------------------
 
     public String dragonInfo(Dragon dragon) {
         return ("id : " + dragon.getId() +
@@ -53,7 +61,7 @@ public class DragonCollection extends DataManager implements Serializable {
                 "\nВозраст : " + dragon.getAge() +
                 "\nОписание : '" + dragon.getDescription() +
                 "\nУмение разговаривать : " + dragon.isSpeaking() +
-                "\nХарактер : " + dragon.getCharacter().getTittle() +
+                "\nХарактер : " + dragon.getCharacter().getCode() +
                 "\nКоличество глаз = " + dragon.getHead().getEyesCount() +
                 "\nКоличество зубов = " + dragon.getHead().getToothCount());
     }
@@ -86,13 +94,27 @@ public class DragonCollection extends DataManager implements Serializable {
         }
     }
 
+    public void updateDragon(Dragon update, int id){
+        for (Dragon dragon : dragons) {
+            if (dragon.getId() == id) {
+                dragon.setName(update.getName());
+                dragon.setCoordinates(update.getCoordinates());
+                dragon.setAge(update.getAge());
+                dragon.setDescription(update.getDescription());
+                dragon.setSpeaking(update.isSpeaking());
+                dragon.setCharacter(update.getCharacter());
+                dragon.setHead(update.getHead());
+            }
+        }
+    }
+
 //----------------------Methods of commands----------------------
 
     public CommandResult add(Request<?> request) {
         try {
-            Dragon person = (Dragon) request.type;
-            //dragon.setId(generateNextId());
-            dragons.add(person);
+            Dragon dragon = (Dragon) request.type;
+            //setId(generateNextId());
+            dragons.add(dragon);
             return new CommandResult(true, "Новый элемент успешно добавлен");
         } catch (Exception exception) {
             return new CommandResult(false, "Передан аргумент другого типа");
@@ -160,4 +182,17 @@ public class DragonCollection extends DataManager implements Serializable {
     public CommandResult updateId(Request<?> request) {
         return null;
     }
+
+    public void save() {
+        // написать request и command(там будет инициализация объектов команд) manager, почитать про udp в яве!!!
+        // перед этим исправь во всем командах ошибки
+    }
+
+    public void saveCollection(String str) throws IOException {
+        String filename = str.trim();
+        parser.convertToCSV(this, filename);
+    }
+
+
+
 }

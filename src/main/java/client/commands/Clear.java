@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.DragonCollection;
 import colors.ConsoleOutput;
 import server.exception.DragonCollectionIsEmptyException;
@@ -13,7 +14,7 @@ import utils.InputData;
  */
 public class Clear extends AbstractCommand {
 
-    public Clear(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public Clear(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.NULL;
     }
@@ -26,7 +27,7 @@ public class Clear extends AbstractCommand {
             if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
 
             dragonsCollection.getDragons().clear();
-            ConsoleOutput.messageOutput("Dragon collection cleared");
+            System.out.println("Dragon collection cleared");
 
         } catch (DragonCollectionIsEmptyException exception) {
             System.out.println("Dragon collection is already clear");

@@ -24,7 +24,7 @@ public class ClearConsole extends AbstractCommand {
                 Runtime.getRuntime().exec("clear");
 
         } catch (final Exception exception) {
-            ConsoleOutput.errOutput("I can`t clear the console");
+            System.out.println("I can`t clear the console");
         }
     }
 

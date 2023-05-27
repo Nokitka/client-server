@@ -1,28 +1,27 @@
 package common.data;
 
 public enum DragonCharacter {
-    EVIL("evil"),
-    GOOD("good"),
-    CHAOTIC_EVIL("chaotic evil"),
-    FICKLE("fickle"),
-    ERROR("error");
+    EVIL(1),
+    GOOD(2),
+    CHAOTIC_EVIL(3),
+    FICKLE(4);
 
-    private String tittle;
+    private final int code;
 
-    private DragonCharacter(String tittle) {
-        this.tittle = tittle;
+    private DragonCharacter(int code) {
+        this.code = code;
     }
 
-    public String getTittle() {
-        return tittle;
+    public int getCode() {
+        return code;
     }
 
-    public static String getStringOfTittles() {
+    public static String getValues() {
 
         StringBuilder stringOfTittles = new StringBuilder();
 
         for (DragonCharacter itr : values()) {
-            stringOfTittles.append(itr.getTittle()).append(", ");
+            stringOfTittles.append(itr.getCode()).append(", ");
         }
 
         return stringOfTittles.substring(0, stringOfTittles.length() - 2);

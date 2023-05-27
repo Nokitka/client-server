@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.ReadManager;
 import collections.DragonCollection;
 import colors.ConsoleOutput;
 import server.dragon.Dragon;
@@ -14,7 +15,7 @@ import utils.InputData;
  */
 public class Show extends AbstractCommand {
 
-    public Show(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+    public Show(String commandName, DragonCollection dragonsCollection, ReadManager inputData) {
         super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.NULL;
     }
@@ -31,7 +32,7 @@ public class Show extends AbstractCommand {
             }
 
         } catch (DragonCollectionIsEmptyException exception) {
-            ConsoleOutput.errOutput("Dragon collection is empty");
+            System.out.println("Dragon collection is empty");
         }
 
     }
