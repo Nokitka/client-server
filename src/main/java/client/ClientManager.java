@@ -1,4 +1,4 @@
-package client.commands;
+package client;
 
 import client.ReadManager;
 import common.data.Coordinates;

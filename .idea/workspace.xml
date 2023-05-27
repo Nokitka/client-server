@@ -4,29 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/commands/ClientManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/Add.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/AddIfMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/AddIfMax.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/AddIfMin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/Clear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/ClearConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/ClearConsole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/CountLessThanAge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/CountLessThanAge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/FilterContainsName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/FilterContainsName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/FilterStartsWithDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/FilterStartsWithDescription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/RemoveById.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/RemoveById.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/RemoveGreater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/RemoveGreater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/commands/UpdateId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/common/data/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/common/data/Dragon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/common/data/DragonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/common/data/DragonCharacter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/DragonCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/DragonCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/GenerationId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/GenerationId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Parser.java" afterDir="false" />
+    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="add client and read manager">
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/ClientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ClientManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,8 +71,16 @@
       <option name="presentableId" value="Default" />
       <updated>1685012650650</updated>
       <workItem from="1685012652097" duration="2647000" />
-      <workItem from="1685018067572" duration="21194000" />
+      <workItem from="1685018067572" duration="21514000" />
     </task>
+    <task id="LOCAL-00001" summary="add client and read manager">
+      <created>1685193459451</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685193459451</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +96,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add client and read manager" />
+    <option name="LAST_COMMIT_MESSAGE" value="add client and read manager" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
