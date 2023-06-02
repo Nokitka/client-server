@@ -4,8 +4,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="add client and read manager">
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/ClientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ClientManager.java" afterDir="false" />
+    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="replace dir position">
+      <change afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/exceptions/CommandRuntimeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/exceptions/InFileModeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/exceptions/NoSuchCommandException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/network/ObjectSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/network/RequestManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/network/Status.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Add.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/CollectionWorker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Executable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/commands/utils/RequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/exceptions/ExitObligedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/managers/CommandCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ClientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/ClientManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Add.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/AddIfMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/AddIfMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/AddIfMin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Clear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/ClearConsole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Command.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/CountLessThanAge.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/CountLessThanAge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/ExecuteScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Exit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/FilterContainsName.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/FilterContainsName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/FilterStartsWithDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/FilterStartsWithDescription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/RemoveById.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/RemoveById.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/RemoveGreater.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/RemoveGreater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/commands/UpdateId.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/UpdateId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/common/DataManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/common/data/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/data/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/common/data/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/data/Dragon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/common/data/DragonCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/data/DragonCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/common/data/DragonHead.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/data/DragonHead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/common/network/CommandResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/common/network/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/common/network/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/CommandCollection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/CustomComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/utils/CustomComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/DragonCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Executable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/GenerationId.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/data/GenerationId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/MainServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/MainServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,22 +94,33 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/mad_duck/Documents/GitHub/lab5",
+    "extract.method.default.visibility": "private",
+    "jdk.selected.JAVA_MODULE": "corretto-17",
+    "last_opened_file_path": "C:/Users/mad_duck/Documents/GitHub/client-server",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mad_duck\Documents\GitHub\client-server\server\src\main\java" />
+      <recent name="C:\Users\mad_duck\Documents\GitHub\client-server\common\src\main\java" />
       <recent name="C:\Users\mad_duck\Documents\GitHub\client-server\src\main\java\client" />
       <recent name="C:\Users\mad_duck\Documents\GitHub\client-server\src\main\java\common" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mad_duck\Documents\GitHub\client-server\client\src\main\java" />
+      <recent name="C:\Users\mad_duck\Documents\GitHub\client-server\server" />
+      <recent name="C:\Users\mad_duck\Documents\GitHub\client-server\common" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="client" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="common.network" />
       <recent name="client.commands" />
       <recent name="" />
       <recent name="server" />
@@ -71,7 +135,8 @@
       <option name="presentableId" value="Default" />
       <updated>1685012650650</updated>
       <workItem from="1685012652097" duration="2647000" />
-      <workItem from="1685018067572" duration="21514000" />
+      <workItem from="1685018067572" duration="31117000" />
+      <workItem from="1685625076159" duration="16625000" />
     </task>
     <task id="LOCAL-00001" summary="add client and read manager">
       <created>1685193459451</created>
@@ -80,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685193459451</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="replace dir position">
+      <created>1685193523975</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685193523975</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,17 +171,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add client and read manager" />
-    <option name="LAST_COMMIT_MESSAGE" value="add client and read manager" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/client/ReadManager.java</url>
-          <line>231</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="replace dir position" />
+    <option name="LAST_COMMIT_MESSAGE" value="replace dir position" />
   </component>
 </project>
