@@ -4,6 +4,8 @@ import data.Coordinates;
 import data.Dragon;
 import data.DragonCharacter;
 import data.DragonHead;
+import network.Configuration;
+import utils.Console;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -12,6 +14,8 @@ import java.util.Scanner;
  * Class includes methods, which return input yield to class Dragon element
  */
 public class ReadManager {
+
+    private static Console console;
 
 //----------------------Auxiliary methods----------------------
 
@@ -69,13 +73,13 @@ public class ReadManager {
 
         try {
 
-            System.out.println("Введите переменную окружения : ");
+            console.println("Введите переменную окружения : ");
             env = in.nextLine().trim();
 
         } catch (NoSuchElementException exception) {
-            System.out.println("Переменная окружения не может быть типа null");
+            console.println("Переменная окружения не может быть типа null");
         } catch (IllegalArgumentException exception) {
-            System.out.println("Ответ не распознан");
+            console.println("Ответ не распознан");
         }
 
         return env;
@@ -88,16 +92,16 @@ public class ReadManager {
         while (true) {
             try {
 
-                System.out.println("Имя : ");
+                console.println("Имя : ");
                 name = in.nextLine().trim();
 
                 if (name.equals("")) throw new IllegalArgumentException();
                 break;
 
             } catch (NoSuchElementException exception) {
-                System.out.println("Имя дракона не может быть типа null");
+                console.println("Имя дракона не может быть типа null");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Имя дракона должно содержать хотя бы один символ");
+                console.println("Имя дракона должно содержать хотя бы один символ");
             }
         }
 
@@ -112,7 +116,7 @@ public class ReadManager {
         while (true) {
             try {
 
-                System.out.println("X = ");
+                console.println("X = ");
                 strX = in.nextLine().trim();
 
                 x = Integer.parseInt(strX);
@@ -120,11 +124,11 @@ public class ReadManager {
                 break;
 
             } catch (NumberFormatException exception) {
-                System.out.println("Введенная координата должна быть типа int");
+                console.println("Введенная координата должна быть типа int");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Введенное значение передано с ошибкой");
+                console.println("Введенное значение передано с ошибкой");
             } catch (NoSuchElementException exception) {
-                System.out.println("Введенное значение не может быть типа null");
+                console.println("Введенное значение не может быть типа null");
             }
         }
 
@@ -139,7 +143,7 @@ public class ReadManager {
         while (true) {
             try {
 
-                System.out.println("Y = ");
+                console.println("Y = ");
                 strY = in.nextLine().trim();
 
                 y = Float.parseFloat(strY);
@@ -147,11 +151,11 @@ public class ReadManager {
                 break;
 
             } catch (NumberFormatException exception) {
-                System.out.println("Введенная координата должна с плавающей точкой");
+                console.println("Введенная координата должна с плавающей точкой");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Введенное значение передано с ошибкой");
+                console.println("Введенное значение передано с ошибкой");
             } catch (NoSuchElementException exception) {
-                System.out.println("Введенное значение не может быть типа null");
+                console.println("Введенное значение не может быть типа null");
             }
         }
 
@@ -170,7 +174,7 @@ public class ReadManager {
         while (true) {
             try {
 
-                System.out.println("Age = ");
+                console.println("Age = ");
                 strAge = in.nextLine().trim();
 
                 age = Long.parseLong(strAge);
@@ -179,11 +183,11 @@ public class ReadManager {
                 break;
 
             } catch (NoSuchElementException exception) {
-                System.out.println("Возраст не может быть типа null");
+                console.println("Возраст не может быть типа null");
             } catch (NumberFormatException exception) {
-                System.out.println("Введенное число должны быть с плавающей точкой");
+                console.println("Введенное число должны быть с плавающей точкой");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Введенное значение передано с ошибкой");
+                console.println("Введенное значение передано с ошибкой");
             }
         }
 
@@ -197,16 +201,16 @@ public class ReadManager {
         while (true) {
             try {
 
-                System.out.println("Описание : ");
+                console.println("Описание : ");
                 description = in.nextLine().trim();
 
                 if (description.equals("")) throw new IllegalArgumentException();
                 break;
 
             } catch (NoSuchElementException exception) {
-                System.out.println("Описание не может быть типа null");
+                console.println("Описание не может быть типа null");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Описание должно содержать хотя бы один символ");
+                console.println("Описание должно содержать хотя бы один символ");
             }
         }
 
@@ -220,16 +224,16 @@ public class ReadManager {
         while (true) {
             try {
 
-                System.out.println("Может ли дракон говорить(по умолчанию нет)?");
+                console.println("Может ли дракон говорить(по умолчанию нет)?");
                 canSpeak = in.nextLine().trim();
 
                 if (yesOrNot(canSpeak) == -1) throw new IllegalArgumentException();
                 break;
 
             } catch (IllegalArgumentException exception) {
-                System.out.println("Ответ не распознан");
+                console.println("Ответ не распознан");
             } catch (NoSuchElementException exception) {
-                System.out.println("Данное поле не может быть типа null");
+                console.println("Данное поле не может быть типа null");
             }
         }
 
@@ -244,8 +248,8 @@ public class ReadManager {
         while (true) {
             try {
 
-                System.out.println("Выберите характер дракона из предложенных : " + DragonCharacter.getValues());
-                System.out.println("Характер : ");
+                console.println("Выберите характер дракона из предложенных : " + DragonCharacter.getValues());
+                console.println("Характер : ");
 
                 strCode = in.nextLine();
                 code = Integer.parseInt(strCode);
@@ -257,11 +261,11 @@ public class ReadManager {
                 }
 
             } catch (NoSuchElementException exception) {
-                System.out.println("Характер не может быть типа null");
+                console.println("Характер не может быть типа null");
             } catch (NumberFormatException exception) {
-                System.out.println("Введите цифру соответствующую характеру дракона");
+                console.println("Введите цифру соответствующую характеру дракона");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Такой характер не определен");
+                console.println("Такой характер не определен");
             }
         }
     }
@@ -274,7 +278,7 @@ public class ReadManager {
         while (true) {
             try {
 
-                System.out.println("Количество глаз = ");
+                console.println("Количество глаз = ");
                 strEyesCount = in.nextLine().trim();
                 eyesCount = Float.parseFloat(strEyesCount);
 
@@ -282,11 +286,11 @@ public class ReadManager {
                 break;
 
             } catch (NumberFormatException exception) {
-                System.out.println("Введенное число должны быть с плавающей точкой");
+                console.println("Введенное число должны быть с плавающей точкой");
             } catch (NoSuchElementException exception) {
-                System.out.println("Количество глаз не должно быть типа ");
+                console.println("Количество глаз не должно быть типа ");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Введенное значение передано с ошибкой");
+                console.println("Введенное значение передано с ошибкой");
             }
         }
 
@@ -301,7 +305,7 @@ public class ReadManager {
         while (true) {
             try {
 
-                System.out.println("Количество зубов = ");
+                console.println("Количество зубов = ");
                 strToothCount = in.nextLine().trim();
 
                 toothCount = Integer.parseInt(strToothCount);
@@ -309,11 +313,11 @@ public class ReadManager {
                 break;
 
             } catch (NumberFormatException exception) {
-                System.out.println("Введенное число должны быть с плавающей точкой");
+                console.println("Введенное число должны быть с плавающей точкой");
             } catch (NoSuchElementException exception) {
-                System.out.println("Количество зубов не должно быть типа ");
+                console.println("Количество зубов не должно быть типа ");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Введенное значение передано с ошибкой");
+                console.println("Введенное значение передано с ошибкой");
             }
         }
 

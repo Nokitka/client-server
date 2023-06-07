@@ -1,4 +1,4 @@
-package commands.available;
+package commands.abstact;
 
 import managers.CollectionManager;
 

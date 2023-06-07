@@ -1,4 +1,4 @@
-package commands.utils;
+package utils;
 
 import data.Dragon;
 

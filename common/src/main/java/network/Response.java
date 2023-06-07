@@ -18,7 +18,7 @@ public class Response {
         return message;
     }
 
-    public Status isStatus() {
+    public Status getStatus() {
         return status;
     }
 }

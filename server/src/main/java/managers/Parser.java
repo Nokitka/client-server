@@ -2,57 +2,59 @@ package managers;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import commands.utils.CustomComparator;
-import managers.CollectionManager;
-import data.Coordinates;
-import data.Dragon;
-import data.DragonCharacter;
-import data.DragonHead;
+import utils.CustomComparator;
+import data.*;
+import exceptions.ExitObligedException;
 import org.apache.commons.lang3.StringUtils;
+import utils.Printable;
 
 import java.io.*;
-import java.math.BigInteger;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.TreeSet;
-import java.util.UUID;
+
+import static utilty.ConsoleColors.*;
 
 public class Parser {
 
-    public Parser() {
+    private Printable console;
+    private final String dirPath = "result";
+
+    public Parser(Printable console) {
+        this.console = console;
     }
 
-    public static void convertToCSV(CollectionManager dragons, String filename) throws IOException {
+    public String convertToCSV(CollectionManager dragons) throws IOException {
 
-        String generateUUIDNo = String.
-                format("%010d", new BigInteger(UUID
-                        .randomUUID()
-                        .toString()
-                        .replace("-", ""), 16));
+        File theDir = new File(dirPath);
+        if (!theDir.exists()){
+            theDir.mkdirs();
+        }
 
-        File file = new File(filename);
-        String filePath = generateUUIDNo + ".csv";
+        Long generateUUIDNo = GenerationId.generatorId();
+        String filePath = dirPath + generateUUIDNo + ".csv";
+        File file = new File(filePath);
 
-        if ((file.exists()
+        /*if ((file.exists()
                 && !file.isDirectory())
                 || (!file.exists())) {
 
             file.mkdir();
 
-        }
+        }*/
 
-        Files.createFile(Path.of(filePath));
-        FileOutputStream fileOutputStream = new FileOutputStream(filePath, true);
+        FileOutputStream fileOutputStream = new FileOutputStream(file, true);
 
         for (Dragon dragon : dragons.getDragons()) {
             fileOutputStream.write(dragon.toCSV().getBytes());
         }
 
+        return file.getAbsolutePath();
+
     }
 
-    public static CollectionManager convertToDragons(File file) throws FileNotFoundException {
+    public CollectionManager convertToDragons() throws FileNotFoundException, ExitObligedException {
 
         //String path = "C:\\Users\\mad_duck\\Documents\\GitHub\\lab5\\test.csv";
+        File file = this.findFile();
         String path = file.getPath();
         if (path.equals("")) {
             return new CollectionManager();
@@ -86,6 +88,19 @@ public class Parser {
         }
 
         return new CollectionManager(dragons);
+    }
+
+    public File findFile() throws ExitObligedException {
+        String file_path = System.getenv("file_path");
+        if (file_path == null || file_path.isEmpty()) {
+            console.printError("Путь должен быть в переменных окружения в переменной 'file_path'");
+            throw new ExitObligedException();
+        }
+        else console.println(toColor("Путь получен успешно", PURPLE));
+
+        File file = new File(file_path);
+
+        return file;
     }
 
 }

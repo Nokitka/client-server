@@ -1,6 +1,6 @@
 package managers;
 
-import commands.utils.CustomComparator;
+import utils.CustomComparator;
 import data.Dragon;
 import network.Request;
 import network.Response;
@@ -88,7 +88,7 @@ public class CollectionManager implements Serializable {
         this.dragons.removeAll(collection);
     }
 
-    public void updateDragon(Dragon update, int id) {
+    /*public void updateDragon(Dragon update, int id) {
         for (Dragon dragon : dragons) {
             if (dragon.getId() == id) {
                 dragon.setName(update.getName());
@@ -100,7 +100,7 @@ public class CollectionManager implements Serializable {
                 dragon.setHead(update.getHead());
             }
         }
-    }
+    }*/
 
     public Dragon getById(long id){
         for (Dragon dragon : dragons){
@@ -177,9 +177,8 @@ public class CollectionManager implements Serializable {
         // перед этим исправь во всем командах ошибки
     }
 
-    public void saveCollection(String str) throws IOException {
-        String filename = str.trim();
-        parser.convertToCSV(this, filename);
+    public String saveCollection() throws IOException {
+        return parser.convertToCSV(this);
     }
 
 

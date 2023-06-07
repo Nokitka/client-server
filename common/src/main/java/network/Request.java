@@ -16,6 +16,15 @@ public class Request implements Serializable {
         this.arg = arg;
     }
 
+    public Request(String command, String arg) {
+        this.command = command;
+        this.arg = arg;
+    }
+
+    public Request(String command) {
+        this.command = command;
+    }
+
     public String getCommand() {
         return command;
     }
@@ -26,5 +35,9 @@ public class Request implements Serializable {
 
     public Dragon getDragon() {
         return dragon;
+    }
+
+    public boolean isEmpty() {
+        return command.isEmpty() && arg.isEmpty() && dragon == null;
     }
 }

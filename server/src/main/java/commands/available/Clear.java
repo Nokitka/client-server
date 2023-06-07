@@ -1,5 +1,6 @@
 package commands.available;
 
+import commands.abstact.CollectionWorker;
 import managers.CollectionManager;
 import network.Request;
 import network.Response;

@@ -1,5 +1,6 @@
 package commands.available;
 
+import commands.abstact.Command;
 import managers.CommandCollection;
 import network.Request;
 import network.Response;

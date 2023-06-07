@@ -1,5 +1,6 @@
 package commands.available;
 
+import commands.abstact.CollectionWorker;
 import managers.CollectionManager;
 import data.Dragon;
 import network.Request;

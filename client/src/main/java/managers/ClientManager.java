@@ -27,7 +27,7 @@ public class ClientManager {
                 head);
     }
 
-    public static Dragon createPersonFromScript(ArrayList<String> data) {
+    public static Dragon createDragonFromScript(ArrayList<String> data) {
         try {
             if ((!data.get(0).equals("")) // name
                     && (Long.parseLong(data.get(3)) > 0) // age

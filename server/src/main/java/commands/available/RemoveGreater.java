@@ -1,5 +1,6 @@
 package commands.available;
 
+import commands.abstact.CollectionWorker;
 import data.Dragon;
 import exceptions.InFileModeException;
 import managers.CollectionManager;

@@ -155,14 +155,13 @@ public class Dragon implements Comparable<Dragon> {
         this.head = head;
     }
 
-    /*public boolean validData() {
+    public boolean validData() {
         if (id == -1) return false;
         if (name.equals("")) return false;
         if (coordinates.getX() == null || coordinates.getY() == null) return false;
         if (age == -1) return false;
-        if (character == DragonCharacter.ERROR) return false;
         //if (speaking == null) return false;
         if (head.getEyesCount() == -1 || head.getToothCount() == -1) return false;
         return true;
-    }*/
+    }
 }

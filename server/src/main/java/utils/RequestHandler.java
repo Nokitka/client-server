@@ -1,4 +1,4 @@
-package commands.utils;
+package utils;
 
 import exceptions.CommandRuntimeException;
 import exceptions.NoSuchCommandException;
@@ -7,16 +7,18 @@ import network.Request;
 import network.Response;
 import network.Status;
 
-public class RequestHandler {
-    private CommandCollection commands;
+import java.io.IOException;
 
-    public RequestHandler(CommandCollection commands) {
-        this.commands = commands;
+public class RequestHandler {
+    private CommandCollection commandCollection;
+
+    public RequestHandler(CommandCollection commandCollection) {
+        this.commandCollection = commandCollection;
     }
 
-    public Response handle(Request request) {
+    public Response handle(Request request) throws IOException {
         try {
-            return commands.executeCommand(request);
+            return commandCollection.executeCommand(request);
         } catch (IllegalArgumentException e) {
             return new Response(Status.WRONG_ARGUMENTS,
                     "Неверное использование аргументов команды");
