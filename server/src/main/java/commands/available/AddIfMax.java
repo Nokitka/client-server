@@ -1,8 +1,8 @@
 package commands.available;
 
 import commands.abstact.CollectionWorker;
-import managers.CollectionManager;
 import data.Dragon;
+import managers.CollectionManager;
 import network.Request;
 import network.Response;
 import network.Status;
@@ -21,17 +21,16 @@ public class AddIfMax extends CollectionWorker {
     @Override
     public Response execute(Request request) throws IllegalArgumentException {
         if (!request.getArg().isBlank()) throw new IllegalArgumentException();
-        if (Objects.isNull(request.getDragon())){
+        if (Objects.isNull(request.getDragon())) {
             return new Response(Status.ASK_OBJECT, "Для команды " + this.getName() + " требуется объект");
         }
         if (request.getDragon().compareTo(Objects.requireNonNull(collectionManager.getDragons().stream()
                 .filter(Objects::nonNull)
                 .max(Dragon::compareTo)
-                .orElse(null))) >= 1)
-        {
+                .orElse(null))) >= 1) {
             collectionManager.add(request);
-            return new Response(Status.OK,"Объект успешно добавлен");
+            return new Response(Status.OK, "Объект успешно добавлен");
         }
-        return new Response(Status.ERROR,"Элемент меньше максимального");
+        return new Response(Status.ERROR, "Элемент меньше максимального");
     }
 }

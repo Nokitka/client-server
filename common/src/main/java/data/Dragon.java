@@ -3,12 +3,6 @@ package data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
-
-@FunctionalInterface
-interface CoordinatesRange<I, F>{
-    float getDistanceFromCentre(I x, F y);
-}
 
 /**
  * Class includes all characteristics of dragon

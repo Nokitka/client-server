@@ -14,12 +14,13 @@ import java.util.Objects;
  */
 public class FilterContainsName extends CollectionWorker {
 
-    public FilterContainsName(CollectionManager collectionManager){
+    public FilterContainsName(CollectionManager collectionManager) {
         super("filter_contains_name", " {name} : вывести драконов, в имени которых содержится строка", collectionManager);
     }
 
     /**
      * Исполнить команду
+     *
      * @param request запрос с клиента
      */
     @Override

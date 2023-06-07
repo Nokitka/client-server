@@ -15,6 +15,7 @@ public class CommandCollection {
 
     private HashMap<String, Command> commands = new HashMap<>();
     private Parser parser;
+
     public void addCommand(Command command) {
         this.commands.put(command.getName(), command);
     }

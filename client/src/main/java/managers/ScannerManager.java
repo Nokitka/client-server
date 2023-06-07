@@ -18,6 +18,7 @@ public class ScannerManager {
 
     /**
      * Устанавливает сканер
+     *
      * @param userScanner Сканер
      */
     public static void setScanner(Scanner userScanner) {

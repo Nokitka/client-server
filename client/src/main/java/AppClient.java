@@ -3,15 +3,14 @@ import network.Configuration;
 import utils.Client;
 import utils.Console;
 import utils.ConsoleInput;
-import utils.UserInput;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.util.Scanner;
 
 public class AppClient {
     private static final int port = Configuration.PORT;
     private static Console console;
+
     public static void main(String[] args) {
         console = new Console();
         try {

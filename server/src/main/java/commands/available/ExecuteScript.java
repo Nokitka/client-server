@@ -14,6 +14,7 @@ public class ExecuteScript extends Command {
 
     /**
      * Исполнить команду
+     *
      * @param request запрос клиента
      * @throws IllegalArgumentException неверные аргументы команды
      */

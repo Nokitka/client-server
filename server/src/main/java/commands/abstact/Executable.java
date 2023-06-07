@@ -1,7 +1,7 @@
 package commands.abstact;
 
-import network.Response;
 import network.Request;
+import network.Response;
 
 import java.io.IOException;
 

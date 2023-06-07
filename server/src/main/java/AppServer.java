@@ -1,10 +1,10 @@
 import commands.available.*;
 import exceptions.ExitObligedException;
-import utils.*;
 import managers.CollectionManager;
 import managers.CommandCollection;
 import managers.Parser;
 import network.Configuration;
+import utils.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class AppServer {
         } catch (ExitObligedException e) {
             console.println(ConsoleColors.toColor("До свидания!", ConsoleColors.YELLOW));
             return;
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             console.printError("Файл не найден");
         }
 

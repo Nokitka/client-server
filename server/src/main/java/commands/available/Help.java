@@ -13,6 +13,7 @@ import network.Status;
 public class Help extends Command {
 
     private CommandCollection commandCollection;
+
     public Help(CommandCollection commandCollection) {
         super("help", " : вывести справку по доступным командам");
         this.commandCollection = commandCollection;
@@ -20,6 +21,7 @@ public class Help extends Command {
 
     /**
      * Исполнить команду
+     *
      * @param request запрос клиента
      * @throws IllegalArgumentException неверные аргументы команды
      */

@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Класс для стандартного ввода через консоль
  */
-public class ConsoleInput implements UserInput{
+public class ConsoleInput implements UserInput {
     private static final Scanner userScanner = ScannerManager.getScanner();
 
     @Override

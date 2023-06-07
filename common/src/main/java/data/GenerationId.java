@@ -16,6 +16,7 @@ public class GenerationId {
 
     /**
      * Generate unique id greater than zero
+     *
      * @return unique id (int)
      */
     public static long generatorId() {

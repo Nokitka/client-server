@@ -22,11 +22,12 @@ public enum ConsoleColors {
 
     /**
      * Основной метод раскрашивания текста
-     * @param s строка которую нужно покрасить
+     *
+     * @param s     строка которую нужно покрасить
      * @param color значение цвета
      * @return цветная строка для вывода в консоль
      */
-    public static String toColor(String s, ConsoleColors color){
+    public static String toColor(String s, ConsoleColors color) {
         return color + s + ConsoleColors.RESET;
     }
 

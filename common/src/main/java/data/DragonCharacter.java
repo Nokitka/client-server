@@ -30,7 +30,7 @@ public enum DragonCharacter implements Serializable {
 
     }
 
-    public static DragonCharacter searchByCode(int code){
+    public static DragonCharacter searchByCode(int code) {
         for (DragonCharacter character : DragonCharacter.values()) {
             if (character.getCode() == code)
                 return character;

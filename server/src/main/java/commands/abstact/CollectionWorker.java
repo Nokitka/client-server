@@ -2,7 +2,7 @@ package commands.abstact;
 
 import managers.CollectionManager;
 
-public abstract class CollectionWorker extends Command{
+public abstract class CollectionWorker extends Command {
 
     protected CollectionManager collectionManager;
 
@@ -14,7 +14,6 @@ public abstract class CollectionWorker extends Command{
         super(name, description);
         this.collectionManager = collectionManager;
     }
-
 
 
 }

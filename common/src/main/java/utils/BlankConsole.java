@@ -1,6 +1,6 @@
 package utils;
 
-public class BlankConsole implements Printable{
+public class BlankConsole implements Printable {
     @Override
     public void println(String a) {
 

@@ -19,11 +19,12 @@ public class RemoveById extends CollectionWorker {
 
     /**
      * Исполнить команду
+     *
      * @param request аргументы команды
      * @throws IllegalArgumentException неверные аргументы команды
      */
     @Override
-    public Response execute(Request request) throws IllegalArgumentException{
+    public Response execute(Request request) throws IllegalArgumentException {
         if (request.getArg().isBlank()) throw new IllegalArgumentException();
         class NoSuchId extends RuntimeException {
         }
@@ -31,10 +32,11 @@ public class RemoveById extends CollectionWorker {
             int id = Integer.parseInt(request.getArg().trim());
             if (!collectionManager.existId(id)) throw new NoSuchId();
             collectionManager.removeDragon(id);
-            return new Response(Status.OK,"Объект удален успешно");
+            return new Response(Status.OK, "Объект удален успешно");
         } catch (NoSuchId err) {
-            return new Response(Status.ERROR,"В коллекции нет элемента с таким id");
+            return new Response(Status.ERROR, "В коллекции нет элемента с таким id");
         } catch (NumberFormatException exception) {
-            return new Response(Status.WRONG_ARGUMENTS,"id должно быть числом типа int");
+            return new Response(Status.WRONG_ARGUMENTS, "id должно быть числом типа int");
         }
-    }}
+    }
+}

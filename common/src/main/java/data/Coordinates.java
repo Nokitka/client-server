@@ -13,7 +13,8 @@ public class Coordinates implements Serializable {
         this.y = y;
     }
 
-    public Coordinates(){}
+    public Coordinates() {
+    }
 
     
     /*public String toString() {

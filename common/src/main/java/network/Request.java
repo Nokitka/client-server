@@ -1,7 +1,6 @@
 package network;
 
 import data.Dragon;
-import data.DragonHead;
 
 import java.io.Serializable;
 

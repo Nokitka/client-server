@@ -11,7 +11,8 @@ import utils.Printable;
 import java.io.*;
 import java.util.TreeSet;
 
-import static utils.ConsoleColors.*;
+import static utils.ConsoleColors.PURPLE;
+import static utils.ConsoleColors.toColor;
 
 public class Parser {
 

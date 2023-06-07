@@ -12,7 +12,7 @@ public class ExecuteFileManager implements UserInput {
     private static final ArrayDeque<String> pathQueue = new ArrayDeque<>();
     private static final ArrayDeque<BufferedReader> fileReaders = new ArrayDeque<>();
 
-    public static void pushFile(String path) throws FileNotFoundException{
+    public static void pushFile(String path) throws FileNotFoundException {
         pathQueue.push(new File(path).getAbsolutePath());
         fileReaders.push(new BufferedReader(new InputStreamReader(new FileInputStream(path))));
     }
@@ -24,28 +24,29 @@ public class ExecuteFileManager implements UserInput {
     public static String readLine() throws IOException {
         return fileReaders.getFirst().readLine();
     }
+
     public static void popFile() throws IOException {
         fileReaders.getFirst().close();
         fileReaders.pop();
-        if(pathQueue.size() >= 1) {
+        if (pathQueue.size() >= 1) {
             pathQueue.pop();
         }
     }
 
-    public static void popRecursion(){
-        if(pathQueue.size() >= 1) {
+    public static void popRecursion() {
+        if (pathQueue.size() >= 1) {
             pathQueue.pop();
         }
     }
 
-    public static boolean fileRepeat(String path){
+    public static boolean fileRepeat(String path) {
         return pathQueue.contains(new File(path).getAbsolutePath());
     }
 
     public String nextLine() {
-        try{
+        try {
             return readLine();
-        } catch (IOException e){
+        } catch (IOException e) {
             return "";
         }
     }

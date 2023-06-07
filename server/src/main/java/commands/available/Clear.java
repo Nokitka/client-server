@@ -20,6 +20,6 @@ public class Clear extends CollectionWorker {
     public Response execute(Request request) throws IllegalArgumentException {
         if (!request.getArg().isBlank()) throw new IllegalArgumentException();
         collectionManager.getDragons().clear();
-        return new Response(Status.OK,"Элементы удалены");
+        return new Response(Status.OK, "Элементы удалены");
     }
 }

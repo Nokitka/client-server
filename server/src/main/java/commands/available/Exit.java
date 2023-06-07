@@ -11,12 +11,13 @@ import network.Status;
  */
 public class Exit extends Command {
 
-    public Exit(){
+    public Exit() {
         super("exit", " : завершить программу (без сохранения в файл)");
     }
 
     /**
      * Исполнить команду
+     *
      * @param request запрос с клиента
      */
     @Override

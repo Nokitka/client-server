@@ -1,10 +1,10 @@
 package managers;
 
-import utils.CustomComparator;
 import data.Dragon;
 import network.Request;
 import network.Response;
 import network.Status;
+import utils.CustomComparator;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -102,16 +102,16 @@ public class CollectionManager implements Serializable {
         }
     }*/
 
-    public Dragon getById(long id){
-        for (Dragon dragon : dragons){
-            if (dragon.getId() == id){
+    public Dragon getById(long id) {
+        for (Dragon dragon : dragons) {
+            if (dragon.getId() == id) {
                 return dragon;
             }
         }
         return null;
     }
 
-    public void editById(long id, Dragon newElement){
+    public void editById(long id, Dragon newElement) {
         Dragon pastElement = this.getById(id);
         this.removeDragon(pastElement.getId());
         newElement.setId(id);

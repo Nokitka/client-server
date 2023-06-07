@@ -13,7 +13,8 @@ public class DragonHead implements Serializable {
         this.toothCount = toothCount;
     }
 
-    public DragonHead(){}
+    public DragonHead() {
+    }
 
     
     /*public String toString() {
