@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Scanner;
 
-public class App {
+public class AppClient {
     private static final int port = Configuration.PORT;
     private static Console console;
     public static void main(String[] args) {

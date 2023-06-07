@@ -14,7 +14,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.List;
 
-public class App {
+public class AppServer {
     public static int port = Configuration.PORT;
     public static final int connection_timeout = 60 * 1000;
     private static final Printable console = new BlankConsole();
