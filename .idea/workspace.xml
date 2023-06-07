@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="simple edits">
+    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="edit pom.xml">
       <change afterPath="$PROJECT_DIR$/client/a" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/adding_script" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/b" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/c" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/high_load_testing" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/simple_script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/AppClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/AppServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,9 +83,9 @@
       <recent name="server" />
     </key>
   </component>
-  <component name="RunManager" selected="Compound.Client+Server">
+  <component name="RunManager" selected="JAR Application.client-1.0-SNAPSHOT.jar">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false">
-      <option name="MAIN_CLASS_NAME" value="AppClient" />
+      <option name="MAIN_CLASS_NAME" value="App" />
       <module name="client" />
       <option name="PROGRAM_PARAMETERS" value="localhost 8087" />
       <method v="2">
@@ -95,7 +96,7 @@
       <envs>
         <env name="file_path" value="C:\Users\mad_duck\Documents\GitHub\client-server\result\4706886961.csv" />
       </envs>
-      <option name="MAIN_CLASS_NAME" value="AppServer" />
+      <option name="MAIN_CLASS_NAME" value="App" />
       <module name="server" />
       <option name="PROGRAM_PARAMETERS" value="8087" />
       <method v="2">
@@ -107,11 +108,34 @@
       <toRun name="Server" type="Application" />
       <method v="2" />
     </configuration>
+    <configuration name="client-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/client/target/client-1.0-SNAPSHOT.jar" />
+      <option name="PROGRAM_PARAMETERS" value="localhost 8087" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <configuration name="server-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/server/target/server-1.0-SNAPSHOT.jar" />
+      <option name="PROGRAM_PARAMETERS" value="8087" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <envs>
+        <env name="file_path" value="&quot;&quot;" />
+      </envs>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Compound.Client+Server" />
+      <item itemvalue="JAR Application.client-1.0-SNAPSHOT.jar" />
+      <item itemvalue="JAR Application.server-1.0-SNAPSHOT.jar" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.client-1.0-SNAPSHOT.jar" />
+        <item itemvalue="JAR Application.server-1.0-SNAPSHOT.jar" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -123,7 +147,7 @@
       <updated>1685012650650</updated>
       <workItem from="1685012652097" duration="2647000" />
       <workItem from="1685018067572" duration="31117000" />
-      <workItem from="1685625076159" duration="49464000" />
+      <workItem from="1685625076159" duration="49943000" />
     </task>
     <task id="LOCAL-00001" summary="add client and read manager">
       <created>1685193459451</created>
@@ -181,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686158835293</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="edit pom.xml">
+      <created>1686159293141</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686159293141</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +237,8 @@
     <MESSAGE value="rename main on client and server" />
     <MESSAGE value="final version" />
     <MESSAGE value="simple edits" />
-    <option name="LAST_COMMIT_MESSAGE" value="simple edits" />
+    <MESSAGE value="edit pom.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit pom.xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

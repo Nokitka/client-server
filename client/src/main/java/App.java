@@ -7,7 +7,7 @@ import utils.ConsoleInput;
 import java.io.IOException;
 import java.net.InetAddress;
 
-public class AppClient {
+public class App {
     private static final int port = Configuration.PORT;
     private static Console console;
 
