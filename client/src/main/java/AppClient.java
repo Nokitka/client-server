@@ -2,6 +2,8 @@ import managers.RuntimeManager;
 import network.Configuration;
 import utils.Client;
 import utils.Console;
+import utils.ConsoleInput;
+import utils.UserInput;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -14,7 +16,7 @@ public class AppClient {
         console = new Console();
         try {
             Client client = new Client(InetAddress.getLocalHost(), port, console);
-            new RuntimeManager(console, client, new Scanner(System.in)).interactiveMode();
+            new RuntimeManager(console, client, new ConsoleInput()).interactiveMode();
         } catch (IOException e) {
             console.println("Невозможно подключиться к серверу!");
         }

@@ -14,7 +14,7 @@ public class Help extends Command {
 
     private CommandCollection commandCollection;
     public Help(CommandCollection commandCollection) {
-        super("help", ": вывести справку по доступным командам");
+        super("help", " : вывести справку по доступным командам");
         this.commandCollection = commandCollection;
     }
 

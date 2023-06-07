@@ -1,7 +1,5 @@
 package utils;
 
-import utilty.ConsoleColors;
-
 /**
  * Класс для вывода в стандартную консоль
  */

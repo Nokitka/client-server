@@ -1,6 +1,8 @@
 package data;
 
-public class DragonHead {
+import java.io.Serializable;
+
+public class DragonHead implements Serializable {
 
     private float eyesCount;
 

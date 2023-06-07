@@ -1,17 +1,13 @@
 package managers;
 
 import data.Dragon;
-import exceptions.InvalidFormException;
-import exceptions.NoSuchCommandException;
-import exceptions.ScriptRecursionException;
+import exceptions.*;
 import managers.ReadManager;
 import managers.ScannerManager;
 import network.Request;
 import network.Response;
 import network.Status;
-import utils.Client;
-import utils.Console;
-import utils.Printable;
+import utils.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,13 +22,14 @@ import java.util.Scanner;
  * Класс для работы с пользовательским вводом
  */
 public class RuntimeManager {
-    private final Scanner userScanner;
+    private final UserInput userScanner;
     private final Printable console;
     private final Client client;
+    private boolean running = true;
 
     private static List<File> scriptStack = new LinkedList<>();
 
-    public RuntimeManager(Console console, Client client, Scanner scanner) {
+    public RuntimeManager(Console console, Client client, UserInput scanner) {
         this.console = console;
         this.client = client;
         this.userScanner = scanner;
@@ -43,19 +40,21 @@ public class RuntimeManager {
      */
     public void interactiveMode() {
         Scanner userScanner = ScannerManager.getScanner();
-        while (true) {
+
+        while (running) {
             try {
                 if (!userScanner.hasNext()) {
                     console.println("До свидания");
-                    System.exit(0);
+                    break;
                 }
                 String[] userCommand = (userScanner.nextLine().trim() + " ").split(" ", 2);
+                if (userCommand[0].isBlank()) continue;
 
                 Response response = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim()));
                 this.printResponse(response);
                 switch (response.getStatus()){
                     case ASK_OBJECT -> {
-                        Dragon dragon = ReadManager.inputDragon(userScanner);
+                        Dragon dragon = ReadManager.inputDragon(new ConsoleInput());
                         if(!dragon.validData()) throw new InvalidFormException();
                         Response newResponse = client.sendAndAskResponse(
                                 new Request(
@@ -69,10 +68,12 @@ public class RuntimeManager {
                             this.printResponse(newResponse);
                         }
                     }
-                    case EXIT -> System.exit(0);
+                    case EXIT -> {
+                        running = false;
+                    }
                     case EXECUTE_SCRIPT -> {
                         ScannerManager.setFileMode();
-                        this.scriptMode(response.getMessage());
+                        this.fileExecution(response.getMessage());
                         ScannerManager.setUserMode();
                     }
                     default -> {}
@@ -93,40 +94,43 @@ public class RuntimeManager {
         }
     }
 
-    public void scriptMode(String fileName) {
-        scriptStack.add(new File(fileName));
-        try (Scanner scriptScanner = new Scanner(new File(fileName))) {
-            if (!scriptScanner.hasNext()) throw new NoSuchElementException();
-            Scanner tmpScanner = ScannerManager.getScanner();
-            ScannerManager.setScanner(scriptScanner);
-            ScannerManager.setFileMode();
-            do {
-                String[] userCommand = (scriptScanner.nextLine().trim() + " ").split(" ", 2);
-                while (scriptScanner.hasNextLine() && userCommand[0].isEmpty()) {
-                    userCommand = (scriptScanner.nextLine().trim() + " ").split(" ", 2);
-                }
-                if (userCommand[0].equals("execute_script")) {
-                    for (File script : scriptStack) {
-                        if (new File(userCommand[1].trim()).equals(script)) {
-                            throw new ScriptRecursionException();
-                        }
+    private void fileExecution(String args) {
+        if (args == null || args.isEmpty()) {
+            console.printError("Путь не распознан");
+            return;
+        }
+        else console.println(ConsoleColors.toColor("Путь получен успешно", ConsoleColors.PURPLE));
+        args = args.trim();
+        try {
+            ExecuteFileManager.pushFile(args);
+            for (String line = ExecuteFileManager.readLine(); line != null; line = ExecuteFileManager.readLine()) {
+                String[] userCommand = (line + " ").split(" ", 2);
+                userCommand[1] = userCommand[1].trim();
+                if (userCommand[0].isBlank()) return;
+                if (userCommand[0].equals("execute_script")){
+                    if(ExecuteFileManager.fileRepeat(userCommand[1])){
+                        console.printError("Найдена рекурсия по пути " + new File(userCommand[1]).getAbsolutePath());
+                        continue;
                     }
                 }
-                console.println("$ " + String.join(" ", userCommand));
-                //this.launch(userCommand.split(" ", 2));
+                console.println(ConsoleColors.toColor("Выполнение команды " + userCommand[0], ConsoleColors.YELLOW));
                 Response response = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim()));
                 this.printResponse(response);
                 switch (response.getStatus()){
                     case ASK_OBJECT -> {
                         Dragon dragon;
                         try{
-                            dragon = ReadManager.inputDragon(userScanner);
-                            if (!dragon.validData()) throw new InvalidFormException();
-                        } catch (InvalidFormException err){
+                            dragon = ReadManager.inputDragon(new ExecuteFileManager());
+                            if (!dragon.validData()) throw new InFileModeException();
+                        } catch (InFileModeException err){
                             console.printError("Поля в файле не валидны! Объект не создан");
                             continue;
                         }
-                        Response newResponse = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim(), dragon));
+                        Response newResponse = client.sendAndAskResponse(
+                                new Request(
+                                        userCommand[0].trim(),
+                                        userCommand[1].trim(),
+                                        dragon));
                         if (newResponse.getStatus() != Status.OK){
                             console.printError(newResponse.getMessage());
                         }
@@ -134,33 +138,21 @@ public class RuntimeManager {
                             this.printResponse(newResponse);
                         }
                     }
-                    case EXIT -> System.exit(0);
+                    case EXIT -> running = false;
                     case EXECUTE_SCRIPT -> {
-                        this.scriptMode(response.getMessage());
+                        this.fileExecution(response.getMessage());
+                        ExecuteFileManager.popRecursion();
                     }
                     default -> {}
                 }
-            } while (scriptScanner.hasNextLine());
-
-            ScannerManager.setScanner(tmpScanner);
-            ScannerManager.setUserMode();
-
-        } catch (FileNotFoundException e) {
-            console.printError("Файл не обнаружен");
-        } catch (NoSuchElementException e) {
-            console.printError("Файл пустой");
-        } catch (ScriptRecursionException e) {
-            console.printError("Скрипт не может вызываться рекурсивно");
-        } catch (NoSuchCommandException e) {
-            console.printError("Такой команды нет в списке");
-        } catch (IllegalArgumentException e) {
-            console.printError("Введены неправильные аргументы команды");
+            }
+            ExecuteFileManager.popFile();
+        } catch (FileNotFoundException fileNotFoundException){
+            console.printError("Такого файла не существует");
         } catch (IOException e) {
-            console.printError("Неизвестная ошибка");
+            console.printError("Ошибка ввода вывода");
         }
-
     }
-
 
     public void printResponse(Response response) {
         switch (response.getStatus()){

@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public class AddIfMax extends CollectionWorker {
     public AddIfMax(CollectionManager collectionManager) {
-        super("add_if_max", " {element}: добавить элемент в коллекцию если он больше максимального", collectionManager);
+        super("add_if_max", " {element} : добавить элемент в коллекцию если он больше максимального", collectionManager);
     }
 
     @Override

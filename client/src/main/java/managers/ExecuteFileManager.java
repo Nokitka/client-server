@@ -1,12 +1,14 @@
 package managers;
 
+import utils.UserInput;
+
 import java.io.*;
 import java.util.ArrayDeque;
 
 /**
  * Класс для хранения файл менеджера для команды execute
  */
-public class ExecuteFileManager{
+public class ExecuteFileManager implements UserInput {
     private static final ArrayDeque<String> pathQueue = new ArrayDeque<>();
     private static final ArrayDeque<BufferedReader> fileReaders = new ArrayDeque<>();
 

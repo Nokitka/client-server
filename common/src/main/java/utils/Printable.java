@@ -1,7 +1,5 @@
 package utils;
 
-import utilty.ConsoleColors;
-
 /**
  * Интерфейс объединяющий способы вывода
  */

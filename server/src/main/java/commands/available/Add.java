@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Add extends CollectionWorker {
 
     public Add(CollectionManager collectionManager) {
-        super("add", " {element}: добавить новый элемент в коллекцию", collectionManager);
+        super("add", " {element} : добавить новый элемент в коллекцию", collectionManager);
     }
 
     @Override

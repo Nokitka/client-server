@@ -55,16 +55,16 @@ public class CollectionManager implements Serializable {
 
     public String dragonInfo(Dragon dragon) {
         return ("id : " + dragon.getId() +
-                "\nИмя : '" + dragon.getName() +
-                "\nX = " + dragon.getCoordinates().getX() +
-                "\nY = " + dragon.getCoordinates().getY() +
-                "\nДата создания : " + dragon.getCreationDate().format(DateTimeFormatter.ofPattern("hh:mm:ss")) +
-                "\nВозраст : " + dragon.getAge() +
-                "\nОписание : '" + dragon.getDescription() +
-                "\nУмение разговаривать : " + dragon.isSpeaking() +
-                "\nХарактер : " + dragon.getCharacter().getCode() +
-                "\nКоличество глаз = " + dragon.getHead().getEyesCount() +
-                "\nКоличество зубов = " + dragon.getHead().getToothCount());
+                "\n     Имя : " + dragon.getName() +
+                "\n     X = " + dragon.getCoordinates().getX() +
+                "\n     Y = " + dragon.getCoordinates().getY() +
+                "\n     Дата создания : " + dragon.getCreationDate().format(DateTimeFormatter.ofPattern("hh:mm:ss")) +
+                "\n     Возраст : " + dragon.getAge() +
+                "\n     Описание : " + dragon.getDescription() +
+                "\n     Умение разговаривать : " + dragon.isSpeaking() +
+                "\n     Характер : " + dragon.getCharacter().getCode() +
+                "\n     Количество глаз = " + dragon.getHead().getEyesCount() +
+                "\n     Количество зубов = " + dragon.getHead().getToothCount()) + "\n";
     }
 
     public boolean existId(int id) {

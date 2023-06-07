@@ -55,10 +55,9 @@ abstract class Server {
             if (scanner.ready()) {
                 String line = scanner.readLine();
                 if (line.equals("save") || line.equals("s")) {
-                    parser.convertToCSV(collectionManager);
+                    console.println("Коллекция успешно сохранена по пути: " + parser.convertToCSV(collectionManager));
                 }
             }
-
             Pair pair;
             try {
                 pair = receiveData();

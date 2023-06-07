@@ -16,7 +16,7 @@ import java.util.Objects;
 public class CountLessThanAge extends CollectionWorker {
 
     public CountLessThanAge(CollectionManager collectionManager) {
-        super("count_less_than_age", " {age}: количество драконов младше данного возраста", collectionManager);
+        super("count_less_than_age", " {age} : количество драконов младше данного возраста", collectionManager);
     }
 
     @Override

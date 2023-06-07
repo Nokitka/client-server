@@ -2,16 +2,16 @@ package managers;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import utils.CustomComparator;
 import data.*;
 import exceptions.ExitObligedException;
 import org.apache.commons.lang3.StringUtils;
+import utils.CustomComparator;
 import utils.Printable;
 
 import java.io.*;
 import java.util.TreeSet;
 
-import static utilty.ConsoleColors.*;
+import static utils.ConsoleColors.*;
 
 public class Parser {
 
@@ -25,12 +25,12 @@ public class Parser {
     public String convertToCSV(CollectionManager dragons) throws IOException {
 
         File theDir = new File(dirPath);
-        if (!theDir.exists()){
-            theDir.mkdirs();
+        if (!theDir.exists()) {
+            theDir.mkdir();
         }
 
         Long generateUUIDNo = GenerationId.generatorId();
-        String filePath = dirPath + generateUUIDNo + ".csv";
+        String filePath = dirPath + "/" + generateUUIDNo + ".csv";
         File file = new File(filePath);
 
         /*if ((file.exists()
@@ -51,13 +51,13 @@ public class Parser {
 
     }
 
-    public CollectionManager convertToDragons() throws FileNotFoundException, ExitObligedException {
+    public TreeSet<Dragon> convertToDragons() throws FileNotFoundException, ExitObligedException {
 
         //String path = "C:\\Users\\mad_duck\\Documents\\GitHub\\lab5\\test.csv";
         File file = this.findFile();
-        String path = file.getPath();
+        String path = file.getAbsolutePath();
         if (path.equals("")) {
-            return new CollectionManager();
+            return new TreeSet<>(new CustomComparator());
         }
 
         CSVReader csvReader = new CSVReader(new FileReader(path));
@@ -75,19 +75,23 @@ public class Parser {
                         Long.parseLong(line[3]),
                         line[4],
                         Boolean.parseBoolean(line[5]),
-                        Enum.valueOf(DragonCharacter.class, String.valueOf(Integer.parseInt(line[6]))),
+                        DragonCharacter.searchByCode(Integer.parseInt(line[6])),
+                        //Enum.valueOf(DragonCharacter.class, String.valueOf(Integer.parseInt(line[6]))),
                         new DragonHead(Float.parseFloat(line[7]),
                                 Integer.parseInt(line[8]))
                 );
                 dragons.add(dragon);
             }
 
-        } catch (IOException | NumberFormatException | ArrayIndexOutOfBoundsException |
-                 NullPointerException | CsvValidationException e) {
-            System.out.println("Ошибка при парсе csv файла");
+        } catch (IOException
+                 | NumberFormatException
+                 | ArrayIndexOutOfBoundsException
+                 | NullPointerException
+                 | CsvValidationException e) {
+            console.printError("Ошибка при парсе csv файла");
         }
 
-        return new CollectionManager(dragons);
+        return dragons;
     }
 
     public File findFile() throws ExitObligedException {
@@ -95,9 +99,7 @@ public class Parser {
         if (file_path == null || file_path.isEmpty()) {
             console.printError("Путь должен быть в переменных окружения в переменной 'file_path'");
             throw new ExitObligedException();
-        }
-        else console.println(toColor("Путь получен успешно", PURPLE));
-
+        } else console.println(toColor("Путь получен успешно " + file_path, PURPLE));
         File file = new File(file_path);
 
         return file;

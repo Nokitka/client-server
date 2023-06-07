@@ -16,7 +16,7 @@ import java.util.Objects;
 public class AddIfMin extends CollectionWorker {
 
     public AddIfMin(CollectionManager collectionManager) {
-        super("add_if_min", " {element}: добавить элемент в коллекцию если он больше минимального", collectionManager);
+        super("add_if_min", " {element} : добавить элемент в коллекцию если он больше минимального", collectionManager);
     }
 
     @Override

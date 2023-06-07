@@ -1,5 +1,6 @@
 package data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -12,7 +13,7 @@ interface CoordinatesRange<I, F>{
 /**
  * Class includes all characteristics of dragon
  */
-public class Dragon implements Comparable<Dragon> {
+public class Dragon implements Comparable<Dragon>, Serializable {
 
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
 
@@ -20,7 +21,7 @@ public class Dragon implements Comparable<Dragon> {
     private Coordinates coordinates; //Поле не может быть null
     private LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
 
-    private Long age; //Значение поля должно быть больше 0
+    private long age; //Значение поля должно быть больше 0
 
     private String description; //Поле не может быть null
 
@@ -70,17 +71,17 @@ public class Dragon implements Comparable<Dragon> {
                 "\", " + age +
                 ", \"" + description + '\"' +
                 ", \"" + speaking +
-                "\", \"" + character.getClass() +
-                "\", " + head.toCSVHead();
+                "\", " + character.getCode() +
+                ", " + head.toCSVHead() + "\n";
     }
 
 
     public int compareTo(Dragon o) {
-        if (Objects.isNull(o)) return 1;
-        CoordinatesRange<Integer, Float> calc = (x, y) -> (float) Math.sqrt(x * x + y * y);
-        return Float.compare(
-                calc.getDistanceFromCentre(this.getCoordinates().getX(), this.getCoordinates().getY()),
-                calc.getDistanceFromCentre(o.getCoordinates().getX(), o.getCoordinates().getY()));
+        int nameCompare = this.getName().compareToIgnoreCase(o.getName());
+        if (nameCompare != 0)
+            return nameCompare;
+        else
+            return Long.compare(this.getId(), o.getId());
     }
 
     public Long getId() {

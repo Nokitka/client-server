@@ -1,13 +1,12 @@
 import commands.available.*;
-import utils.DatagramServer;
-import utils.RequestHandler;
+import exceptions.ExitObligedException;
+import utils.*;
 import managers.CollectionManager;
 import managers.CommandCollection;
 import managers.Parser;
 import network.Configuration;
-import utils.BlankConsole;
-import utils.Printable;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
@@ -17,17 +16,27 @@ import java.util.List;
 public class AppServer {
     public static int port = Configuration.PORT;
     public static final int connection_timeout = 60 * 1000;
-    private static final Printable console = new BlankConsole();
+    private static final Printable console = new Console();
+
     public static void main(String[] args) {
-        if(args.length != 1){
+        if (args.length != 1) {
             console.printError("Поместите путь в аргументы командной строки!");
             return;
         }
 
         Parser parser = new Parser(console);
         CollectionManager collectionManager = new CollectionManager(parser);
-        CommandCollection commandCollection = new CommandCollection(parser);
 
+        try {
+            collectionManager.setDragons(parser.convertToDragons());
+        } catch (ExitObligedException e) {
+            console.println(ConsoleColors.toColor("До свидания!", ConsoleColors.YELLOW));
+            return;
+        }catch (FileNotFoundException e) {
+            console.printError("Файл не найден");
+        }
+
+        CommandCollection commandCollection = new CommandCollection(parser);
 
         commandCollection.addCommand(List.of(
 
@@ -43,7 +52,7 @@ public class AppServer {
                 new Info(collectionManager),
                 new RemoveById(collectionManager),
                 new RemoveGreater(collectionManager),
-                new Save(collectionManager, commandCollection),
+                //new Save(collectionManager, commandCollection),
                 new Show(collectionManager),
                 new UpdateId(collectionManager)
         ));
@@ -61,6 +70,7 @@ public class AppServer {
             server.run();
         } catch (IOException e) {
             console.printError("Неизвестная ошибка ");
+            e.printStackTrace();
         }
     }
 }

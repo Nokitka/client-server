@@ -13,7 +13,7 @@ import network.Status;
 public class Clear extends CollectionWorker {
 
     public Clear(CollectionManager collectionManager) {
-        super("clear", ": очистить коллекцию", collectionManager);
+        super("clear", " : очистить коллекцию", collectionManager);
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.Objects;
 public class UpdateId extends CollectionWorker {
 
     public UpdateId(CollectionManager collectionManager) {
-        super("update", " id {element}: обновить значение элемента коллекции, id которого равен заданному", collectionManager);
+        super("update", " id {element} : обновить значение элемента коллекции, id которого равен заданному", collectionManager);
     }
 
     /**

@@ -4,13 +4,14 @@ import data.Coordinates;
 import data.Dragon;
 import data.DragonCharacter;
 import data.DragonHead;
+import utils.UserInput;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClientManager {
 
-    public static Dragon getNewDragon(Scanner in) {
+    public static Dragon getNewDragon(UserInput in) {
         String name = ReadManager.inputName(in);
         Coordinates coordinates = ReadManager.inputCoordinates(in);
         long age = ReadManager.inputAge(in);

@@ -14,7 +14,7 @@ import network.Status;
 public class RemoveById extends CollectionWorker {
 
     public RemoveById(CollectionManager collectionManager) {
-        super("remove_by_id", " id: удалить элемент из коллекции по его id", collectionManager);
+        super("remove_by_id", " {id} : удалить элемент из коллекции по его id", collectionManager);
     }
 
     /**
