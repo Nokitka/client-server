@@ -12,13 +12,9 @@ public interface Printable {
         println(a);
     }
 
-    ;
-
     default void print(String a, ConsoleColors consoleColors) {
         print(a);
     }
-
-    ;
 
     void printError(String a);
 }

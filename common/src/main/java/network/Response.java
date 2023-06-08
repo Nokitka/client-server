@@ -2,6 +2,9 @@ package network;
 
 import java.io.Serializable;
 
+/**
+ * Класс ответа сервера
+ */
 public class Response implements Serializable {
 
     private String message;

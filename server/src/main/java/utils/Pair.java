@@ -2,6 +2,9 @@ package utils;
 
 import java.net.SocketAddress;
 
+/**
+ * Класс, который хранит в себе адрес и данные в виде байтового массива
+ */
 public class Pair {
     private byte[] data;
     private SocketAddress addr;

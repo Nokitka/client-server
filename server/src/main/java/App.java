@@ -19,10 +19,10 @@ public class App {
     private static final Printable console = new Console();
 
     public static void main(String[] args) {
-        if (args.length != 1) {
+        /*if (args.length != 1) {
             console.printError("Поместите путь в аргументы командной строки!");
             return;
-        }
+        }*/
 
         Parser parser = new Parser(console);
         CollectionManager collectionManager = new CollectionManager(parser);

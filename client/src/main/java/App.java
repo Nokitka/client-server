@@ -9,10 +9,9 @@ import java.net.InetAddress;
 
 public class App {
     private static final int port = Configuration.PORT;
-    private static Console console;
 
     public static void main(String[] args) {
-        console = new Console();
+        Console console = new Console();
         try {
             Client client = new Client(InetAddress.getLocalHost(), port, console);
             new RuntimeManager(console, client, new ConsoleInput()).interactiveMode();

@@ -5,7 +5,7 @@ import data.Dragon;
 import java.util.Comparator;
 
 /**
- * Class commands.utils.CustomComparator for using custom sorting dragon`s TreeSet
+ * Class CustomComparator for using custom sorting dragon`s TreeSet
  */
 public class CustomComparator implements Comparator<Dragon> {
 

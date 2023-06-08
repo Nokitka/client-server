@@ -9,6 +9,9 @@ import network.Status;
 
 import java.io.IOException;
 
+/**
+ * Распределитель ответов от сервера по ошибкам
+ */
 public class RequestHandler {
     private CommandCollection commandCollection;
 

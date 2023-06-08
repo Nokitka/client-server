@@ -1,5 +1,6 @@
 package utils;
 
+import network.ObjectSerializer;
 import network.Request;
 import network.Response;
 import network.Status;
@@ -32,15 +33,16 @@ public class Client {
         this.client.configureBlocking(false);
     }
 
+    /**
+     * Отправка запроса и получение ответа от сервера
+     * @param request
+     * @return
+     * @throws IOException
+     */
     public Response sendAndAskResponse(Request request) throws IOException {
         if (request.isEmpty()) return new Response(Status.WRONG_ARGUMENTS, "Запрос пустой!");
 
-        bStream = new ByteArrayOutputStream();
-        ObjectOutput oo = new ObjectOutputStream(bStream);
-        oo.writeObject(request);
-        oo.flush();
-        oo.close();
-        byte[] serializedMessage = bStream.toByteArray();
+        byte[] serializedMessage = ObjectSerializer.serializeObject(request);
         ByteBuffer buf = ByteBuffer.wrap(serializedMessage);
         client.send(buf, this.addr);
         buf.clear();
@@ -56,14 +58,14 @@ public class Client {
         receiveBuf.get(bytes);
 
         byte[] toDeserialize = receiveBuf.array();
-        this.iStream = new ObjectInputStream(new ByteArrayInputStream(toDeserialize));
         Response response = null;
+
         try {
-            response = (Response) iStream.readObject();
+             response = (Response) ObjectSerializer.deserializeObject(toDeserialize);
         } catch (ClassNotFoundException ex) {
             console.printError(String.valueOf(ex));
         }
-        iStream.close();
+        //iStream.close();
         return response;
     }
 }

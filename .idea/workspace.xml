@@ -4,14 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="rename main">
+    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="less package size">
       <change afterPath="$PROJECT_DIR$/client/a" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/adding_script" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/b" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/c" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/high_load_testing" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/simple_script" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/ExecuteFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/ExecuteFileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/utils/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/utils/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/ObjectSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/ObjectSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/utils/BlankConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/utils/BlankConsole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/utils/Printable.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/utils/Printable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CommandCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CommandCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/CustomComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/CustomComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/DatagramServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/DatagramServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +73,8 @@
     "jdk.selected.JAVA_MODULE": "corretto-17",
     "last_opened_file_path": "C:/Users/mad_duck/Documents/GitHub/lab5",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
@@ -82,11 +102,10 @@
       <recent name="server" />
     </key>
   </component>
-  <component name="RunManager" selected="JAR Application.client-1.0-SNAPSHOT.jar">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="client" />
-      <option name="PROGRAM_PARAMETERS" value="localhost 8087" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -97,7 +116,6 @@
       </envs>
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="server" />
-      <option name="PROGRAM_PARAMETERS" value="8087" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -146,7 +164,7 @@
       <updated>1685012650650</updated>
       <workItem from="1685012652097" duration="2647000" />
       <workItem from="1685018067572" duration="31117000" />
-      <workItem from="1685625076159" duration="50419000" />
+      <workItem from="1685625076159" duration="53789000" />
     </task>
     <task id="LOCAL-00001" summary="add client and read manager">
       <created>1685193459451</created>
@@ -218,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686159668800</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="less package size">
+      <created>1686160097877</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1686160097877</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,59 +270,60 @@
     <MESSAGE value="simple edits" />
     <MESSAGE value="edit pom.xml" />
     <MESSAGE value="rename main" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename main" />
+    <MESSAGE value="less package size" />
+    <option name="LAST_COMMIT_MESSAGE" value="less package size" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>73</line>
+          <line>76</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>74</line>
+          <line>77</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>75</line>
+          <line>78</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>76</line>
+          <line>79</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>78</line>
+          <line>81</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>77</line>
+          <line>80</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>80</line>
+          <line>83</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>81</line>
+          <line>84</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>72</line>
+          <line>75</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/managers/Parser.java</url>
-          <line>71</line>
+          <line>74</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>

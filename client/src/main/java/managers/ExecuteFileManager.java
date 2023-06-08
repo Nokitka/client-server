@@ -21,10 +21,20 @@ public class ExecuteFileManager implements UserInput {
         return new File(pathQueue.getFirst());
     }
 
+    /**
+     * Считывание строки из файла
+     * @return
+     * @throws IOException
+     */
     public static String readLine() throws IOException {
         return fileReaders.getFirst().readLine();
     }
 
+
+    /**
+     * Удаление файла из двусторонней очереди
+     * @throws IOException
+     */
     public static void popFile() throws IOException {
         fileReaders.getFirst().close();
         fileReaders.pop();

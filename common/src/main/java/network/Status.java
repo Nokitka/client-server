@@ -2,6 +2,9 @@ package network;
 
 import java.io.Serializable;
 
+/**
+ * Класс со статусами исполнения запроса
+ */
 public enum Status implements Serializable {
 
     OK,

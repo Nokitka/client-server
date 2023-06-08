@@ -11,6 +11,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
+/**
+ * Класс для работы с командами
+ */
 public class CommandCollection {
 
     private HashMap<String, Command> commands = new HashMap<>();

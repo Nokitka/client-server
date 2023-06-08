@@ -94,6 +94,10 @@ public class RuntimeManager {
         }
     }
 
+    /**
+     * Выполнение команды execute_script
+     * @param args
+     */
     private void fileExecution(String args) {
         if (args == null || args.isEmpty()) {
             console.printError("Путь не распознан");

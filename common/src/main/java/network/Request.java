@@ -4,6 +4,9 @@ import data.Dragon;
 
 import java.io.Serializable;
 
+/**
+ * Класс запроса клиента
+ */
 public class Request implements Serializable {
     private String command;
     private String arg;

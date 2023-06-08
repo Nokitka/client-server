@@ -13,6 +13,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.TreeSet;
 
+/**
+ * Класс для работы с коллекцией драконов
+ */
 public class CollectionManager implements Serializable {
 
 //----------------------Variables----------------------

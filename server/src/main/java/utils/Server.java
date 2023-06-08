@@ -2,6 +2,7 @@ package utils;
 
 import managers.CollectionManager;
 import managers.Parser;
+import network.ObjectSerializer;
 import network.Request;
 import network.Response;
 
@@ -78,9 +79,7 @@ abstract class Server {
 
             Request request = null;
             try {
-                ByteArrayInputStream bais = new ByteArrayInputStream(dataFromClient);
-                ObjectInputStream ois = new ObjectInputStream(bais);
-                request = (Request) ois.readObject();
+                request = (Request) ObjectSerializer.deserializeObject(dataFromClient);
                 console.println("Получен запрос с командой " + request.getCommand());
             } catch (IOException e) {
                 continue;
@@ -93,12 +92,8 @@ abstract class Server {
                 response = requestHandler.handle(request);
             } catch (Exception e) {
             }
-            ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-            ObjectOutput oo = new ObjectOutputStream(bStream);
-            oo.writeObject(response);
-            oo.flush();
-            oo.close();
-            byte[] data = bStream.toByteArray();
+
+            byte[] data = ObjectSerializer.serializeObject(response);
 
             try {
                 sendData(data, clientAddr);

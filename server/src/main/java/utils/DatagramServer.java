@@ -6,6 +6,9 @@ import managers.Parser;
 import java.io.IOException;
 import java.net.*;
 
+/**
+ * Класс для работы с отправкой данных и приемом
+ */
 public class DatagramServer extends Server {
     private final DatagramSocket socket;
 

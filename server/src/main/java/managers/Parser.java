@@ -14,6 +14,9 @@ import java.util.TreeSet;
 import static utils.ConsoleColors.PURPLE;
 import static utils.ConsoleColors.toColor;
 
+/**
+ * Класс для работы с сsv форматом данных
+ */
 public class Parser {
 
     private Printable console;
