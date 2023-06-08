@@ -35,8 +35,8 @@ public class Client {
 
     /**
      * Отправка запроса и получение ответа от сервера
-     * @param request
-     * @return
+     * @param request запрос от клиента
+     * @return ответ, который прислал сервер
      * @throws IOException
      */
     public Response sendAndAskResponse(Request request) throws IOException {
