@@ -4,34 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="less package size">
+    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="simple edits">
       <change afterPath="$PROJECT_DIR$/client/a" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/adding_script" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/b" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/c" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/high_load_testing" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/simple_script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/ExecuteFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/ExecuteFileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/managers/RuntimeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/utils/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/utils/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/ObjectSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/ObjectSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/network/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/network/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/utils/BlankConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/utils/BlankConsole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/utils/Printable.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/utils/Printable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CollectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/CommandCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/CommandCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/CustomComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/CustomComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/DatagramServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/DatagramServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/Pair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +92,7 @@
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application">
       <envs>
-        <env name="file_path" value="C:\Users\mad_duck\Documents\GitHub\client-server\result\4706886961.csv" />
+        <env name="file_path" value="" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="server" />
@@ -164,7 +144,7 @@
       <updated>1685012650650</updated>
       <workItem from="1685012652097" duration="2647000" />
       <workItem from="1685018067572" duration="31117000" />
-      <workItem from="1685625076159" duration="53789000" />
+      <workItem from="1685625076159" duration="54224000" />
     </task>
     <task id="LOCAL-00001" summary="add client and read manager">
       <created>1685193459451</created>
@@ -243,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686160097877</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="simple edits">
+      <created>1686239567898</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1686239567898</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,11 +254,11 @@
     <MESSAGE value="add network" />
     <MESSAGE value="rename main on client and server" />
     <MESSAGE value="final version" />
-    <MESSAGE value="simple edits" />
     <MESSAGE value="edit pom.xml" />
     <MESSAGE value="rename main" />
     <MESSAGE value="less package size" />
-    <option name="LAST_COMMIT_MESSAGE" value="less package size" />
+    <MESSAGE value="simple edits" />
+    <option name="LAST_COMMIT_MESSAGE" value="simple edits" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

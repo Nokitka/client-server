@@ -29,11 +29,10 @@ public class App {
 
         try {
             collectionManager.setDragons(parser.convertToDragons());
-        } catch (ExitObligedException e) {
-            console.println(ConsoleColors.toColor("До свидания!", ConsoleColors.YELLOW));
-            return;
         } catch (FileNotFoundException e) {
             console.printError("Файл не найден");
+        } catch (ExitObligedException e){
+
         }
 
         CommandCollection commandCollection = new CommandCollection(parser);
