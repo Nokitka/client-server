@@ -31,6 +31,8 @@ public class Help extends Command {
         return new Response(Status.OK,
                 String.join("\n",
                         commandCollection.getCommands()
-                                .stream().map(Command::toString).toList()));
+                                .stream()
+                                .map(Command::toString)
+                                .toList()));
     }
 }

@@ -27,8 +27,8 @@ public class AddIfMin extends CollectionWorker {
         }
         if (request.getDragon().compareTo(Objects.requireNonNull(collectionManager.getDragons().stream()
                 .filter(Objects::nonNull)
-                .max(Dragon::compareTo)
-                .orElse(null))) <= 1) {
+                .min(Dragon::compareTo)
+                .orElse(null))) >= 1) {
             collectionManager.add(request);
             return new Response(Status.OK, "Объект успешно добавлен");
         }

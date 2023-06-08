@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="simple edits">
+    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="simple edits 2.0">
       <change afterPath="$PROJECT_DIR$/client/a" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/adding_script" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/b" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/c" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/high_load_testing" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/simple_script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/available/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/AddIfMin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/available/FilterStartsWithDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/FilterStartsWithDescription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/commands/available/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/commands/available/Help.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,9 +94,6 @@
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application">
-      <envs>
-        <env name="file_path" value="" />
-      </envs>
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="server" />
       <method v="2">
@@ -144,7 +144,7 @@
       <updated>1685012650650</updated>
       <workItem from="1685012652097" duration="2647000" />
       <workItem from="1685018067572" duration="31117000" />
-      <workItem from="1685625076159" duration="54224000" />
+      <workItem from="1685625076159" duration="56881000" />
     </task>
     <task id="LOCAL-00001" summary="add client and read manager">
       <created>1685193459451</created>
@@ -230,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686239567898</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="simple edits 2.0">
+      <created>1686240165172</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1686240165172</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +265,8 @@
     <MESSAGE value="rename main" />
     <MESSAGE value="less package size" />
     <MESSAGE value="simple edits" />
-    <option name="LAST_COMMIT_MESSAGE" value="simple edits" />
+    <MESSAGE value="simple edits 2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="simple edits 2.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
