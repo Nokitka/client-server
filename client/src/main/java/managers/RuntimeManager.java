@@ -107,6 +107,7 @@ public class RuntimeManager {
             } catch (InvalidFormException e) {
                 console.printError("Поля не валидны! Объект не создан");
             } catch (PortUnreachableException e) {
+                e.printStackTrace();
                 console.printError("Ошибка подключения, сервер недоступен");
             } catch (IOException e) {
                 console.printError("Неизвестная ошибка " + e);

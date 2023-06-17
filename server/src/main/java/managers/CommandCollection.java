@@ -17,16 +17,13 @@ import java.util.stream.Collectors;
  * Класс для работы с командами
  */
 public class CommandCollection {
-
     private HashMap<String, Command> commands = new HashMap<>();
-    private Parser parser;
+
+    public CommandCollection() {
+    }
 
     public void addCommand(Command command) {
         this.commands.put(command.getName(), command);
-    }
-
-    public CommandCollection(Parser parser) {
-        this.parser = parser;
     }
 
     public void addCommand(Collection<Command> commands) {

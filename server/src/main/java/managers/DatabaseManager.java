@@ -32,6 +32,7 @@ public class DatabaseManager {
             this.connect();
             this.createMainBase();
         } catch (SQLException e) {
+            e.printStackTrace();
             System.out.println("Ошибка при исполнении изначального запроса либо таблицы уже созданы");
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Такого алгоритма нет!");
@@ -46,8 +47,8 @@ public class DatabaseManager {
             connection = DriverManager.getConnection(App.DATABASE_URL, info);
             System.out.println("Успешно подключен к базе данных");
         } catch (SQLException | IOException e) {
+            e.printStackTrace();
             try{
-
                 connection = DriverManager.getConnection(App.DATABASE_URL_HELIOS, info);
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -94,6 +95,7 @@ public class DatabaseManager {
             }
         } catch (SQLException e) {
             System.out.println("Неверная команда sql!");
+            e.printStackTrace();
             return false;
         }
     }

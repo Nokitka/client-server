@@ -4,6 +4,7 @@ import commands.available.*;
 import exceptions.ExitObligedException;
 import managers.CollectionManager;
 import managers.CommandCollection;
+import managers.DatabaseManager;
 import managers.Parser;
 import network.Configuration;
 import utils.Console;
@@ -51,7 +52,7 @@ public class App {
 
         }
 
-        CommandCollection commandCollection = new CommandCollection(parser);
+        CommandCollection commandCollection = new CommandCollection();
 
         commandCollection.addCommand(List.of(
 

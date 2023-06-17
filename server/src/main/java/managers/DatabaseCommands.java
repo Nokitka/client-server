@@ -14,7 +14,7 @@ public class DatabaseCommands {
                 cord_x INTEGER NOT NULL,
                 cord_y FLOAT NOT NULL ,
                 creation_date DATE NOT NULL ,
-                age LONG NOT NULL,
+                age BIGINT NOT NULL,
                 description TEXT NOT NULL,
                 speaking BOOLEAN NOT NULL,
                 character CHARACTERS NOT NULL,
