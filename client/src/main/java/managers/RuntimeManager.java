@@ -7,16 +7,14 @@ import exceptions.NoSuchCommandException;
 import network.Request;
 import network.Response;
 import network.Status;
+import network.User;
 import utils.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.PortUnreachableException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Класс для работы с пользовательским вводом
@@ -25,6 +23,7 @@ public class RuntimeManager {
     private final UserInput userScanner;
     private final Printable console;
     private final Client client;
+    private User user = null;
     private boolean running = true;
 
     private static List<File> scriptStack = new LinkedList<>();
@@ -43,6 +42,26 @@ public class RuntimeManager {
 
         while (running) {
             try {
+                if (Objects.isNull(user)) {
+                    Response response = null;
+                    boolean isLogin = true;
+                    do {
+                        if(!Objects.isNull(response)) {
+                            console.println( (isLogin)
+                                    ? "Такой связки логин-пароль нет, попробуйте снова"
+                                    : "Этот логин уже занят, попробуйте снова");
+                        }
+                        UserLogin userForm = new UserLogin(console);
+                        isLogin = userForm.askIfLogin();
+                        user = new UserLogin(console).build();
+                        if (isLogin) {
+                            response = client.sendAndAskResponse(new Request("ping", "", user));
+                        } else {
+                            response = client.sendAndAskResponse(new Request("register", "", user));
+                        }
+                    } while (response.getStatus() != Status.OK);
+                    console.println("Вы успешно зашли в аккаунт");
+                }
                 if (!userScanner.hasNext()) {
                     console.println("До свидания");
                     break;
@@ -50,7 +69,7 @@ public class RuntimeManager {
                 String[] userCommand = (userScanner.nextLine().trim() + " ").split(" ", 2);
                 if (userCommand[0].isBlank()) continue;
 
-                Response response = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim()));
+                Response response = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim(), user));
                 this.printResponse(response);
                 switch (response.getStatus()) {
                     case ASK_OBJECT -> {
@@ -60,7 +79,8 @@ public class RuntimeManager {
                                 new Request(
                                         userCommand[0].trim(),
                                         userCommand[1].trim(),
-                                        dragon));
+                                        dragon,
+                                        user));
                         if (newResponse.getStatus() != Status.OK) {
                             console.printError(newResponse.getMessage());
                         } else {
@@ -117,7 +137,7 @@ public class RuntimeManager {
                     }
                 }
                 console.println(ConsoleColors.toColor("Выполнение команды " + userCommand[0], ConsoleColors.YELLOW));
-                Response response = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim()));
+                Response response = client.sendAndAskResponse(new Request(userCommand[0].trim(), userCommand[1].trim(), user));
                 this.printResponse(response);
                 switch (response.getStatus()) {
                     case ASK_OBJECT -> {
@@ -133,7 +153,8 @@ public class RuntimeManager {
                                 new Request(
                                         userCommand[0].trim(),
                                         userCommand[1].trim(),
-                                        dragon));
+                                        dragon,
+                                        user));
                         if (newResponse.getStatus() != Status.OK) {
                             console.printError(newResponse.getMessage());
                         } else {

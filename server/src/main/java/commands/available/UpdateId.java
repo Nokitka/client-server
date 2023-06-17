@@ -5,6 +5,7 @@ import managers.CollectionManager;
 import network.Request;
 import network.Response;
 import network.Status;
+import utils.DatabaseHandler;
 
 import java.util.Objects;
 
@@ -33,11 +34,14 @@ public class UpdateId extends CollectionWorker {
         try {
             int id = Integer.parseInt(request.getArg().trim());
             if (!collectionManager.existId(id)) throw new NoSuchId();
-            if (Objects.isNull(request.getDragon())) {
+            if (Objects.isNull(request.getDragon())){
                 return new Response(Status.ASK_OBJECT, "Для команды " + this.getName() + " требуется объект");
             }
-            collectionManager.editById(id, request.getDragon());
-            return new Response(Status.OK, "Объект успешно обновлен");
+            if(DatabaseHandler.getDatabaseManager().updateObject(id, request.getDragon(), request.getUser())){
+                collectionManager.editById(id, request.getDragon());
+                return new Response(Status.OK, "Объект успешно обновлен");
+            }
+            return new Response(Status.ERROR, "Объект не обновлен. Вероятнее всего он не ваш");
         } catch (NoSuchId err) {
             return new Response(Status.ERROR, "В коллекции нет элемента с таким id");
         } catch (NumberFormatException exception) {

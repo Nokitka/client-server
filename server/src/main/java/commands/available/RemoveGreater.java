@@ -7,6 +7,7 @@ import managers.CollectionManager;
 import network.Request;
 import network.Response;
 import network.Status;
+import utils.DatabaseHandler;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -39,10 +40,12 @@ public class RemoveGreater extends CollectionWorker {
             }
             Collection<Dragon> toRemove = collectionManager.getDragons().stream()
                     .filter(Objects::nonNull)
-                    .filter(dragon -> dragon.compareTo(request.getDragon()) >= 1)
+                    .filter(studyGroup -> studyGroup.compareTo(request.getDragon()) >= 1)
+                    .filter(studyGroup -> studyGroup.getUserLogin().equals(request.getUser().name()))
+                    .filter((obj) -> DatabaseHandler.getDatabaseManager().deleteObject(obj.getId(), request.getUser()))
                     .toList();
             collectionManager.removeDragons(toRemove);
-            return new Response(Status.OK, "Удалены элементы большие чем заданный");
+            return new Response(Status.OK,"Удалены элементы большие чем заданный");
         } catch (NoElements e) {
             return new Response(Status.ERROR, "В коллекции нет элементов");
         } catch (InFileModeException e) {

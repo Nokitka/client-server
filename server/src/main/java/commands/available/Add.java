@@ -6,6 +6,7 @@ import managers.CollectionManager;
 import network.Request;
 import network.Response;
 import network.Status;
+import utils.DatabaseHandler;
 
 import java.util.Objects;
 
@@ -25,7 +26,10 @@ public class Add extends CollectionWorker {
         if (Objects.isNull(request.getDragon())) {
             return new Response(Status.ASK_OBJECT, "Для команды " + this.getName() + " требуется объект");
         } else {
-            request.getDragon().setId(GenerationId.generatorId());
+            int new_id = DatabaseHandler.getDatabaseManager().addObject(request.getDragon(), request.getUser());
+            if(new_id == -1) return new Response(Status.ERROR, "Объект добавить не удалось");
+            request.getDragon().setId(new_id);
+            request.getDragon().setUserLogin(request.getUser().name());
             collectionManager.add(request);
             return new Response(Status.OK, "Дракон успешно добавлен");
         }

@@ -16,7 +16,7 @@ public class Save extends CollectionWorker {
     }
 
     @Override
-    public Response execute(Request request) throws IllegalArgumentException, IOException {
+    public Response execute(Request request) throws IllegalArgumentException {
         if (!request.getArg().isBlank()) throw new IllegalArgumentException();
 
         String path = collectionManager.saveCollection();

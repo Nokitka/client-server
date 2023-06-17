@@ -1,3 +1,5 @@
+package main;
+
 import managers.RuntimeManager;
 import network.Configuration;
 import utils.Client;

@@ -1,7 +1,9 @@
 package managers;
 
 import commands.abstact.Command;
+import exceptions.CommandRuntimeException;
 import exceptions.InFileModeException;
+import exceptions.NoSuchCommandException;
 import network.Request;
 import network.Response;
 import network.Status;
@@ -32,7 +34,7 @@ public class CommandCollection {
                 .collect(Collectors.toMap(Command::getName, s -> s)));
     }
 
-    public Response executeCommand(Request request) throws IOException, InFileModeException, IllegalArgumentException {
+    public Response executeCommand(Request request) throws InFileModeException, IllegalArgumentException, CommandRuntimeException, NoSuchCommandException {
         if (commands.containsKey(request.getCommand()))
             return commands.get(request.getCommand()).execute(request);
         return new Response(Status.ERROR, "Данной команды не существует");

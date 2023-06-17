@@ -11,20 +11,24 @@ public class Request implements Serializable {
     private String command;
     private String arg;
     private Dragon dragon;
+    private User user;
 
-    public Request(String command, String arg, Dragon dragon) {
+    public Request(String command, String arg, Dragon dragon, User user) {
         this.command = command;
         this.dragon = dragon;
         this.arg = arg;
+        this.user = user;
     }
 
-    public Request(String command, String arg) {
+    public Request(String command, String arg, User user) {
         this.command = command;
         this.arg = arg;
+        this.user = user;
     }
 
-    public Request(String command) {
+    public Request(String command, User user) {
         this.command = command;
+        this.user = user;
     }
 
     public String getCommand() {
@@ -37,6 +41,10 @@ public class Request implements Serializable {
 
     public Dragon getDragon() {
         return dragon;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public boolean isEmpty() {

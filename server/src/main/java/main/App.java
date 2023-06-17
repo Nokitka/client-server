@@ -1,19 +1,35 @@
+package main;
+
 import commands.available.*;
 import exceptions.ExitObligedException;
 import managers.CollectionManager;
 import managers.CommandCollection;
 import managers.Parser;
 import network.Configuration;
-import utils.*;
+import utils.Console;
+import utils.DatabaseHandler;
+import utils.DatagramServer;
+import utils.Printable;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.List;
 
 public class App {
+
+    //-------------------------------КОНФИГУРАЦИОННЫЕ ПЕРЕМЕННЫЕ-----------------------------------------
+
+    public static final int CONNECTION_TIMEOUT = 60 * 1000;
+
+    public static final String HASHING_ALGORITHM = "MD5";
+    public static final String DATABASE_URL = "jdbc:postgresql://localhost:5433/studs";
+    public static final String DATABASE_URL_HELIOS = "jdbc:postgresql://pg:5433/studs";
+    public static final String DATABASE_CONFIG_PATH = "C:\\Users\\mad_duck\\Documents\\GitHub\\client-server\\server\\dbconfig.cfg";
+
+    //--------------------------------------------------------------------------------------------------
+
     public static int port = Configuration.PORT;
     public static final int connection_timeout = 60 * 1000;
     private static final Printable console = new Console();
@@ -31,7 +47,7 @@ public class App {
             collectionManager.setDragons(parser.convertToDragons());
         } catch (FileNotFoundException e) {
             console.printError("Файл не найден");
-        } catch (ExitObligedException e){
+        } catch (ExitObligedException e) {
 
         }
 
@@ -53,23 +69,20 @@ public class App {
                 new RemoveGreater(collectionManager),
                 //new Save(collectionManager, commandCollection),
                 new Show(collectionManager),
-                new UpdateId(collectionManager)
+                new UpdateId(collectionManager),
+                new Register(DatabaseHandler.getDatabaseManager()),
+                new Ping()
         ));
 
-        RequestHandler requestHandler = new RequestHandler(commandCollection);
         DatagramServer server = null;
         try {
-            server = new DatagramServer(InetAddress.getLocalHost(), port, connection_timeout, requestHandler, parser, collectionManager, console);
+            server = new DatagramServer(InetAddress.getLocalHost(), port, connection_timeout, commandCollection, DatabaseHandler.getDatabaseManager());
         } catch (UnknownHostException e) {
             console.printError("Неизвестный хост");
         } catch (SocketException e) {
             console.printError("Случилась ошибка сокета");
         }
-        try {
-            server.run();
-        } catch (IOException e) {
-            console.printError("Неизвестная ошибка ");
-            e.printStackTrace();
-        }
+        server.run();
+
     }
 }

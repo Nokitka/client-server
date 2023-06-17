@@ -6,6 +6,7 @@ import managers.CollectionManager;
 import network.Request;
 import network.Response;
 import network.Status;
+import utils.DatabaseHandler;
 
 import java.util.Objects;
 
@@ -28,6 +29,10 @@ public class AddIfMax extends CollectionWorker {
                 .filter(Objects::nonNull)
                 .max(Dragon::compareTo)
                 .orElse(null))) >= 1) {
+            int new_id = DatabaseHandler.getDatabaseManager().addObject(request.getDragon(), request.getUser());
+            if(new_id == -1) return new Response(Status.ERROR, "Объект добавить не удалось");
+            request.getDragon().setId(new_id);
+            request.getDragon().setUserLogin(request.getUser().name());
             collectionManager.add(request);
             return new Response(Status.OK, "Объект успешно добавлен");
         }

@@ -9,7 +9,7 @@ public abstract class Command implements Executable {
     private final String name;
     private final String description;
 
-    public abstract Response execute(Request request) throws IOException;
+    public abstract Response execute(Request request);
 
     public Command(String name, String description) {
         this.name = name;

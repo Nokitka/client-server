@@ -26,7 +26,7 @@ public class Parser {
         this.console = console;
     }
 
-    public String convertToCSV(CollectionManager dragons) throws IOException {
+    public String convertToCSV(CollectionManager dragons) {
 
         File theDir = new File(dirPath);
         if (!theDir.exists()) {
@@ -44,11 +44,14 @@ public class Parser {
             file.mkdir();
 
         }*/
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file, true);
 
-        FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+            for (Dragon dragon : dragons.getDragons()) {
+                fileOutputStream.write(dragon.toCSV().getBytes());
+            }
+        } catch (IOException e) {
 
-        for (Dragon dragon : dragons.getDragons()) {
-            fileOutputStream.write(dragon.toCSV().getBytes());
         }
 
         return file.getAbsolutePath();

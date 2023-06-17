@@ -1,3 +1,4 @@
+/*
 package utils;
 
 import managers.CollectionManager;
@@ -39,9 +40,11 @@ abstract class Server {
 
     public abstract Pair receiveData() throws IOException;
 
-    /**
+    */
+/**
      * Отправляет данные клиенту
-     */
+     *//*
+
     public abstract void sendData(byte[] data, SocketAddress addr) throws IOException;
 
 
@@ -89,7 +92,7 @@ abstract class Server {
 
             Response response = null;
             try {
-                response = requestHandler.handle(request);
+                response = requestHandler.handler(request);
             } catch (Exception e) {
             }
 
@@ -104,4 +107,4 @@ abstract class Server {
 
         close();
     }
-}
+}*/

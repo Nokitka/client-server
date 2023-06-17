@@ -1,50 +1,56 @@
 package utils;
 
-import managers.CollectionManager;
-import managers.Parser;
+import managers.CommandCollection;
+import managers.ConnectionManager;
+import managers.DatabaseManager;
+import managers.FutureManager;
 
-import java.io.IOException;
-import java.net.*;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.SocketException;
+import java.util.concurrent.ForkJoinPool;
 
-/**
- * Класс для работы с отправкой данных и приемом
- */
-public class DatagramServer extends Server {
+public class DatagramServer {
     private final DatagramSocket socket;
-
-    public DatagramServer(InetAddress address, int port, int soTimeout, RequestHandler requestHandler, Parser parser, CollectionManager collectionManager, Printable console) throws SocketException {
-        super(new InetSocketAddress(address, port), soTimeout, requestHandler, parser, collectionManager, console);
+    private final InetSocketAddress addr;
+    private int soTimeout;
+    private CommandCollection commandCollection;
+    private DatabaseManager databaseManager;
+    private static final ForkJoinPool forkJoinPool = new ForkJoinPool();
+    public DatagramServer(InetAddress address, int port, int soTimeout, CommandCollection commandCollection, DatabaseManager databaseManager) throws SocketException {
+        this.addr = new InetSocketAddress(address, port);
         this.socket = new DatagramSocket(getAddr());
         this.socket.setSoTimeout(1);
+        this.soTimeout = soTimeout;
+        this.commandCollection = commandCollection;
+        this.databaseManager = databaseManager;
     }
 
 
-    @Override
-    public Pair receiveData() throws IOException {
-        byte[] res = new byte[0];
-        SocketAddress addr = null;
-        Pair pair = new Pair(res, addr);
-        byte[] buffer = new byte[1024 * 1024];
-        DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-
-        socket.receive(packet);
-        addr = packet.getSocketAddress();
-        res = buffer;
-
-        pair.setDataAndAddr(res, addr);
-        return pair;
+    public InetSocketAddress getAddr() {
+        return addr;
+    }
+    public DatagramSocket getSocket() {
+        return socket;
     }
 
-
-    @Override
-    public void sendData(byte[] data, SocketAddress addr) throws IOException {
-        DatagramPacket packet = new DatagramPacket(data, data.length, addr);
-        socket.send(packet);
+    public void run(){
+        while (true){
+            FutureManager.checkAllFutures();
+            forkJoinPool.submit(new ConnectionManager(commandCollection, socket, databaseManager));
+            try {
+                Thread.sleep(5);
+            } catch (InterruptedException ignored) {
+            }
+        }
     }
 
-
-    @Override
     public void close() {
         socket.close();
+    }
+
+    public void disconnectFromClient() {
+        socket.disconnect();
     }
 }

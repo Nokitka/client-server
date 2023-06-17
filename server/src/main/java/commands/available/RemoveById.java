@@ -5,6 +5,7 @@ import managers.CollectionManager;
 import network.Request;
 import network.Response;
 import network.Status;
+import utils.DatabaseHandler;
 
 /**
  * Class implements command remove_by_id.
@@ -31,8 +32,12 @@ public class RemoveById extends CollectionWorker {
         try {
             int id = Integer.parseInt(request.getArg().trim());
             if (!collectionManager.existId(id)) throw new NoSuchId();
-            collectionManager.removeDragon(id);
-            return new Response(Status.OK, "Объект удален успешно");
+            if (DatabaseHandler.getDatabaseManager().deleteObject(id, request.getUser())) {
+                collectionManager.removeDragon(collectionManager.getById(id));
+                return new Response(Status.OK,"Объект удален успешно");
+            } else{
+                return new Response(Status.ERROR, "Выбранный объект не удален. Скорее всего он вам не принадлежит");
+            }
         } catch (NoSuchId err) {
             return new Response(Status.ERROR, "В коллекции нет элемента с таким id");
         } catch (NumberFormatException exception) {

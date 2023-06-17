@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
+import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -40,7 +41,7 @@ public class CollectionManager implements Serializable {
     public CollectionManager() {
     }
 
-    //----------------------Getters&Setters----------------------
+//----------------------Getters&Setters----------------------
 
     public TreeSet<Dragon> getDragons() {
         return dragons;
@@ -78,7 +79,7 @@ public class CollectionManager implements Serializable {
         return false;
     }
 
-    public void removeDragon(long id) {
+    public void removeDragonById(long id) {
         for (Dragon dragon : dragons) {
             if (dragon.getId() == id) {
                 dragons.remove(dragon);
@@ -87,8 +88,28 @@ public class CollectionManager implements Serializable {
         }
     }
 
+    public void removeDragon(Dragon rmvDragon) {
+        for (Dragon dragon : dragons) {
+            if (dragon.equals(rmvDragon)) {
+                dragons.remove(dragon);
+                return;
+            }
+        }
+    }
+
     public void removeDragons(Collection<Dragon> collection) {
         this.dragons.removeAll(collection);
+    }
+
+    public void removeDragonsByListOfIds(List<Long> delete) {
+        for (long id : delete){
+            for (Dragon dragon : this.dragons){
+                if (dragon.getId() == id){
+                    dragons.remove(dragon);
+                    break;
+                }
+            }
+        }
     }
 
     /*public void updateDragon(Dragon update, int id) {
@@ -116,7 +137,7 @@ public class CollectionManager implements Serializable {
 
     public void editById(long id, Dragon newElement) {
         Dragon pastElement = this.getById(id);
-        this.removeDragon(pastElement.getId());
+        this.removeDragonById(pastElement.getId());
         newElement.setId(id);
         this.dragons.add(newElement);
     }
@@ -180,7 +201,7 @@ public class CollectionManager implements Serializable {
         // перед этим исправь во всем командах ошибки
     }
 
-    public String saveCollection() throws IOException {
+    public String saveCollection() {
         return parser.convertToCSV(this);
     }
 

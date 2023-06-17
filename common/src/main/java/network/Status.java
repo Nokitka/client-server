@@ -12,6 +12,7 @@ public enum Status implements Serializable {
     ERROR,
     WRONG_ARGUMENTS,
     ASK_OBJECT,
-    EXECUTE_SCRIPT
+    EXECUTE_SCRIPT,
+    LOGIN_FAILED
 
 }

@@ -6,6 +6,6 @@ package network;
 public final class Configuration {
 
     public static final String IP = "localhost";
-    public static final int PORT = 8087;
+    public static final int PORT = 5678;
 
 }
