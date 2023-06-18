@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="clear code">
+    <list default="true" id="4641460d-788b-493d-90c2-91deb77211c9" name="Changes" comment="delete bug in sql commands">
       <change afterPath="$PROJECT_DIR$/client/a" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/adding_script" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/client/b" afterDir="false" />
@@ -12,7 +12,7 @@
       <change afterPath="$PROJECT_DIR$/client/simple_script" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/server/dbconfig.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/DatabaseCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/managers/ConnectionManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +147,7 @@
       <workItem from="1685018067572" duration="31117000" />
       <workItem from="1685625076159" duration="62080000" />
       <workItem from="1686921413790" duration="11107000" />
-      <workItem from="1687029433280" duration="8775000" />
+      <workItem from="1687029433280" duration="10287000" />
     </task>
     <task id="LOCAL-00001" summary="add client and read manager">
       <created>1685193459451</created>
@@ -275,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687102478493</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="delete bug in sql commands">
+      <created>1687103359988</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1687103359988</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +316,8 @@
     <MESSAGE value="edits for 7th lab" />
     <MESSAGE value="change sql request type [long--&gt;bigint]" />
     <MESSAGE value="clear code" />
-    <option name="LAST_COMMIT_MESSAGE" value="clear code" />
+    <MESSAGE value="delete bug in sql commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete bug in sql commands" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

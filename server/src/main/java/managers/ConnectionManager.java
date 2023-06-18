@@ -7,7 +7,7 @@ import network.Status;
 import utils.Pair;
 import utils.RequestHandler;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketAddress;
@@ -15,6 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ConnectionManager implements Runnable {
+    private final int BUFFER_SIZE = 1024 * 1024;
     private final CommandCollection commandCollection;
     private static final ExecutorService fixedThreadPool = Executors.newFixedThreadPool(8);   //!!!!!!!!!!!!!!!!!!!!!
     private DatagramSocket socket;
@@ -33,10 +34,10 @@ public class ConnectionManager implements Runnable {
 
     @Override
     public void run() {
-        Pair pair = null;
-        try{
+        Pair pair;
+        try {
             pair = receiveData();
-        } catch (IOException e){
+        } catch (IOException e) {
             return;
         }
 
@@ -51,9 +52,6 @@ public class ConnectionManager implements Runnable {
 
         Request request = null;
         try {
-            /*ByteArrayInputStream bais = new ByteArrayInputStream(dataFromClient);
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            request = (Request) ois.readObject();*/
             request = (Request) ObjectSerializer.deserializeObject(dataFromClient);
             System.out.println("Получен ответ с командой " + request.getCommand());
         } catch (IOException e) {
@@ -63,7 +61,7 @@ public class ConnectionManager implements Runnable {
         }
 
         Response response;
-        if(!databaseManager.confirmUser(request.getUser()) && !request.getCommand().equals("register")){
+        if (!databaseManager.confirmUser(request.getUser()) && !request.getCommand().equals("register")) {
             System.out.println("Пользователь не одобрен");
             response = new Response(Status.LOGIN_FAILED, "Неверный пользователь!");
             submitNewResponse(new ConnectionManagerPool(response, socket, pair.getAddr()));
@@ -74,27 +72,13 @@ public class ConnectionManager implements Runnable {
 
     public static void submitNewResponse(ConnectionManagerPool connectionManagerPool) {
         new Thread(() -> {
-            byte[] data = null;
+            byte[] data;
             try {
                 data = ObjectSerializer.serializeObject(connectionManagerPool.response());
-            } catch (IOException e) {
-                //e.printStackTrace();
-            }
-            /*ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-            try {
-                ObjectOutput oo = new ObjectOutputStream(bStream);
-                oo.writeObject(connectionManagerPool.response());
-                oo.flush();
-                oo.close();
-            }catch (IOException e) {
-//                System.out.println(e);
-            }
-            byte[] data = bStream.toByteArray();*/
-
-            try {
                 sendData(data, connectionManagerPool.socketAddress(), connectionManagerPool.socket());
                 System.out.println("Отправлен ответ. IP: " + connectionManagerPool.socketAddress().toString());
-            } catch (Exception e) {
+            } catch (IOException e) {
+                //e.printStackTrace();
             }
         }).start();
     }
@@ -103,13 +87,13 @@ public class ConnectionManager implements Runnable {
         byte[] res = new byte[0];
         SocketAddress addr = null;
         Pair pair = new Pair(res, addr);
-        byte[] buffer = new byte[65507];
+        byte[] buffer = new byte[BUFFER_SIZE];
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
         socket.receive(packet);
         addr = packet.getSocketAddress();
         res = buffer;
         pair.setDataAndAddr(res, addr);
-        return  pair;
+        return pair;
     }
 
     public static void sendData(byte[] data, SocketAddress addr, DatagramSocket socket) throws IOException {
