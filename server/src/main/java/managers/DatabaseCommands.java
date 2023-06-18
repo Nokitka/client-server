@@ -2,12 +2,16 @@ package managers;
 
 public class DatabaseCommands {
     public static final String allTablesCreation = """
-            CREATE TYPE CHARACTERS AS ENUM(
-                'EVIL',
-                'GOOD',
-                'CHAOTIC_EVIL',
-                'FICKLE'
-            );
+            DO $$ BEGIN
+                CREATE TYPE characters AS ENUM(
+                    'EVIL',
+                    'GOOD',
+                    'CHAOTIC_EVIL',
+                    'FICKLE'
+                );
+            EXCEPTION
+                WHEN duplicate_object THEN null;
+            END $$;
             CREATE TABLE IF NOT EXISTS dragons (
                 id SERIAL PRIMARY KEY,
                 name TEXT NOT NULL ,
