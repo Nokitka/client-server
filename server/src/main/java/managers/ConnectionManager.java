@@ -1,5 +1,6 @@
 package managers;
 
+import network.ObjectSerializer;
 import network.Request;
 import network.Response;
 import network.Status;
@@ -50,9 +51,10 @@ public class ConnectionManager implements Runnable {
 
         Request request = null;
         try {
-            ByteArrayInputStream bais = new ByteArrayInputStream(dataFromClient);
+            /*ByteArrayInputStream bais = new ByteArrayInputStream(dataFromClient);
             ObjectInputStream ois = new ObjectInputStream(bais);
-            request = (Request) ois.readObject();
+            request = (Request) ois.readObject();*/
+            request = (Request) ObjectSerializer.deserializeObject(dataFromClient);
             System.out.println("Получен ответ с командой " + request.getCommand());
         } catch (IOException e) {
 //                continue;
@@ -72,7 +74,13 @@ public class ConnectionManager implements Runnable {
 
     public static void submitNewResponse(ConnectionManagerPool connectionManagerPool) {
         new Thread(() -> {
-            ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+            byte[] data = null;
+            try {
+                data = ObjectSerializer.serializeObject(connectionManagerPool.response());
+            } catch (IOException e) {
+                //e.printStackTrace();
+            }
+            /*ByteArrayOutputStream bStream = new ByteArrayOutputStream();
             try {
                 ObjectOutput oo = new ObjectOutputStream(bStream);
                 oo.writeObject(connectionManagerPool.response());
@@ -81,7 +89,7 @@ public class ConnectionManager implements Runnable {
             }catch (IOException e) {
 //                System.out.println(e);
             }
-            byte[] data = bStream.toByteArray();
+            byte[] data = bStream.toByteArray();*/
 
             try {
                 sendData(data, connectionManagerPool.socketAddress(), connectionManagerPool.socket());
