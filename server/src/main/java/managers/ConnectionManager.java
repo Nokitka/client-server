@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
 public class ConnectionManager implements Runnable {
     private final int BUFFER_SIZE = 1024 * 1024;
     private final CommandCollection commandCollection;
-    private static final ExecutorService fixedThreadPool = Executors.newFixedThreadPool(8);   //!!!!!!!!!!!!!!!!!!!!!
+    private static final ExecutorService cashedThreadPool = Executors.newCachedThreadPool();   
     private DatagramSocket socket;
     private static SocketAddress clientAddr;
     private final DatabaseManager databaseManager;
@@ -60,13 +60,13 @@ public class ConnectionManager implements Runnable {
             System.out.println("Произошла ошибка при чтении полученных данных!");
         }
 
-        Response response;
+        Response response = null;
         if (!databaseManager.confirmUser(request.getUser()) && !request.getCommand().equals("register")) {
             System.out.println("Пользователь не одобрен");
             response = new Response(Status.LOGIN_FAILED, "Неверный пользователь!");
             submitNewResponse(new ConnectionManagerPool(response, socket, pair.getAddr()));
         } else {
-            FutureManager.addNewFixedThreadPoolFuture(fixedThreadPool.submit(new RequestHandler(commandCollection, request, socket, pair.getAddr())));
+            FutureManager.addNewFixedThreadPoolFuture(cashedThreadPool.submit(new RequestHandler(commandCollection, request, socket, pair.getAddr())));
         }
     }
 
@@ -84,16 +84,11 @@ public class ConnectionManager implements Runnable {
     }
 
     public Pair receiveData() throws IOException {
-        byte[] res = new byte[0];
-        SocketAddress addr = null;
-        Pair pair = new Pair(res, addr);
         byte[] buffer = new byte[BUFFER_SIZE];
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
         socket.receive(packet);
-        addr = packet.getSocketAddress();
-        res = buffer;
-        pair.setDataAndAddr(res, addr);
-        return pair;
+        SocketAddress addr = packet.getSocketAddress();
+        return new Pair(buffer, addr);
     }
 
     public static void sendData(byte[] data, SocketAddress addr, DatagramSocket socket) throws IOException {
